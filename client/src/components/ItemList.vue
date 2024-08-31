@@ -34,7 +34,7 @@ export default {
     },
     async deleteItem(id) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/items/${id}`);
+        await axios.delete(`http://127.0.0.1:80005/api/items/${id}`);
         this.fetchItems(); // Refresh the list after deletion
       } catch (error) {
         console.error(error);
