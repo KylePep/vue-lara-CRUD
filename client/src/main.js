@@ -1,11 +1,14 @@
 import './assets/main.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 import { createApp } from 'vue'
+import { registerGlobalComponents } from './registerGlobalComponents'
 import App from './App.vue'
-import router from './router'
+import { router } from './router'
 
-const app = createApp(App)
+const root = createApp(App)
+registerGlobalComponents(root)
 
-app.use(router)
-
-app.mount('#app')
+root
+  .use(router)
+  .mount('#app')
