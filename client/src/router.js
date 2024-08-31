@@ -1,21 +1,19 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-// import { authGuard, authSettled } from '@bcwdev/auth0provider-client'
 
-function loadPage(page) {
-  return () => import(`./pages/${page}.vue`)
+function loadView(view) {
+  return () => import(`./views/${view}.vue`)
 }
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    // beforeEnter: authSettled,
-    component: loadPage('HomePage')
+    component: loadView('HomeView')
   },
   {
     path: '/about',
     name: 'About',
-    component: loadPage('AboutPage')
+    component: loadView('AboutView')
   }
 ]
 
