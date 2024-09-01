@@ -11,35 +11,33 @@
   </div>
 </template>
 
+
 <script>
-import axios from 'axios';
+import { AppState } from "@/AppState.js";
+import { itemsService } from "@/services/ItemsService.js";
+import Pop from "@/utils/Pop.js";
+import { computed, onMounted } from "vue";
 
 export default {
-  data() {
+  setup() {
+
+    async function getItems() {
+      try {
+        await itemsService.getItems()
+      } catch (error) {
+        Pop.error(error.message, '[Failed to get Items]')
+      }
+    }
+
+    onMounted(() => {
+      getItems()
+    })
     return {
-      items: []
-    };
-  },
-  created() {
-    this.fetchItems();
-  },
-  methods: {
-    async fetchItems() {
-      try {
-        const response = await axios.get('http://127.0.0.1:8000/api/items');
-        this.items = response.data;
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async deleteItem(id) {
-      try {
-        await axios.delete(`http://127.0.0.1:80005/api/items/${id}`);
-        this.fetchItems(); // Refresh the list after deletion
-      } catch (error) {
-        console.error(error);
-      }
+      items: computed(() => AppState.items)
     }
   }
 }
 </script>
+
+
+<style lang="scss" scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
     <h1 class="text-3xl font-bold mb-4">Items Management</h1>
-    <ItemList ref="itemList" />
+    <itemList ref="itemList" />
     <ItemForm @itemAdded="refreshItems" />
   </div>
 </template>
