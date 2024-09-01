@@ -2,13 +2,12 @@
   <div>
     <ul>
       <li v-for="item in items" :key="item.id" class="mb-2 p-4 border-b">
-        <p><strong>{{ item.name }}</strong></p>
+        <p class="font-bold uppercase"><strong>{{ item.name }}</strong></p>
         <p>{{ item.description }}</p>
         <p>${{ item.price }}</p>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
           INFO
         </button>
-        <!-- <button @click="deleteItem(item.id)" class="text-red-500">Delete</button> -->
       </li>
     </ul>
   </div>
