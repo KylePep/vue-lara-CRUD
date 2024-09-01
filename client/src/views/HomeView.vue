@@ -1,8 +1,8 @@
 <template>
   <div class="container mx-auto">
     <h1 class="text-3xl font-bold mb-4">Items Management</h1>
-    <itemList ref="itemList" />
-    <ItemForm @itemAdded="refreshItems" />
+    <itemList />
+    <ItemForm />
   </div>
 </template>
 
@@ -14,11 +14,6 @@ export default {
   components: {
     itemList,
     ItemForm
-  },
-  methods: {
-    refreshItems() {
-      this.$refs.itemList.fetchItems();
-    }
   }
 }
 </script>

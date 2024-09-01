@@ -1,6 +1,7 @@
 import { Item } from "@/models/Item.js"
 import { AppState } from "../AppState.js"
 import { api } from "./AxiosService.js"
+import { logger } from "@/utils/Logger.js"
 
 class ItemsService {
   async getItems() {
@@ -19,6 +20,16 @@ class ItemsService {
     const item = new Item(res.data)
     AppState.items.push(item)
     return item
+  }
+
+  async editItem(itemData) {
+    const res = await api.put(`api/items/${itemData.id}`, itemData)
+    const newItem = new Item(res.data)
+    const indexToReplace = AppState.items.findIndex((i) => i.id == newItem.id)
+    AppState.items[indexToReplace] = newItem;
+    logger.log(newItem, indexToReplace, AppState.items)
+    AppState.activeItem = newItem
+
   }
 
   async deleteItem(itemId) {
