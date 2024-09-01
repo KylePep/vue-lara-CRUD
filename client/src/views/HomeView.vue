@@ -1,8 +1,8 @@
 <template>
   <div class="container mx-auto">
-    <h1 class="text-3xl font-bold mb-4">Items Management</h1>
-    <itemList />
+    <h2 class="text-2xl font-bold mb-4">Items </h2>
     <ItemForm />
+    <itemList />
   </div>
 </template>
 

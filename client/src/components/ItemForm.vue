@@ -10,7 +10,7 @@
     </div>
     <div class="mb-2">
       <label class="block">Price</label>
-      <input type="number" v-model="editable.price" class="border p-2 w-full bg-gray-500" required />
+      <input type="number" step=".01" v-model="editable.price" class="border p-2 w-full bg-gray-500" required />
     </div>
     <button type="submit" class="bg-green-500 text-white p-2 rounded">Add Item</button>
   </form>
