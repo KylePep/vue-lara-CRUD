@@ -20,5 +20,10 @@ class ItemsService {
     AppState.items.push(item)
     return item
   }
+
+  async deleteItem(itemId) {
+    await api.delete(`api/items/${itemId}`, itemId)
+    AppState.items = AppState.items.filter(a => a.id != itemId)
+  }
 }
 export const itemsService = new ItemsService()

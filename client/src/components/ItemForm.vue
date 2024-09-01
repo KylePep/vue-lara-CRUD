@@ -2,15 +2,15 @@
   <form @submit.prevent="createItem" class="mb-4">
     <div class="mb-2">
       <label class="block">Name</label>
-      <input type="text" v-model="editable.name" class="border p-2 w-full" required />
+      <input type="text" v-model="editable.name" class="border p-2 w-full bg-gray-500" required />
     </div>
     <div class="mb-2">
       <label class="block">Description</label>
-      <input type="text" v-model="editable.description" class="border p-2 w-full" />
+      <input type="text" v-model="editable.description" class="border p-2 w-full bg-gray-500" />
     </div>
     <div class="mb-2">
       <label class="block">Price</label>
-      <input type="number" v-model="editable.price" class="border p-2 w-full" required />
+      <input type="number" v-model="editable.price" class="border p-2 w-full bg-gray-500" required />
     </div>
     <button type="submit" class="bg-blue-500 text-white p-2 rounded">Add Item</button>
   </form>
