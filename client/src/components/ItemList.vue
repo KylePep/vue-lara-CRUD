@@ -5,7 +5,7 @@
         <p><strong>{{ item.name }}</strong></p>
         <p>{{ item.description }}</p>
         <p>${{ item.price }}</p>
-        <button class="btn btn-blue bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           INFO
         </button>
         <!-- <button @click="deleteItem(item.id)" class="text-red-500">Delete</button> -->
@@ -43,12 +43,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-.btn {
-  @apply font-bold py-2 px-4 rounded;
-}
-
-.btn-blue {
-  @apply bg-blue-500 text-white;
-}
-</style>
+<style lang="scss" scoped></style>
