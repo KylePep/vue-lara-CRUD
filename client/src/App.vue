@@ -1,5 +1,6 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import LoginBar from "./components/LoginBar.vue";
 // import HelloWorld from './components/HelloWorld.vue'
 </script>
 
@@ -7,7 +8,8 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <nav>
       <h1 class="text-3xl font-bold mb-4 uppercase">item app </h1>
-      <RouterLink to="/">Home</RouterLink>
+      <LoginBar />
+      <!-- <RouterLink to="/">Home</RouterLink> -->
       <!-- <RouterLink to="/about">About</RouterLink> -->
     </nav>
   </header>
