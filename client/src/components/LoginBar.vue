@@ -83,37 +83,38 @@ if (AppState.account.id) {
 }
 
 // Login function
-const login = async () => {
+async function login() {
   try {
     const accountData = editable.value
     await accountService.getAccount(accountData)
     isAuthenticated.value = true
+    editable.value = {}
   } catch (error) {
-    Pop.error(error.message, '[Something went wrong]')
+    Pop.error('Something went wrong')
   }
 }
 
 // Logout function
-const register = async () => {
+async function register() {
   try {
     const accountData = editable.value
     await accountService.createAccount(accountData)
     isAuthenticated.value = true
-
+    editable.value = {}
   } catch (error) {
-    Pop.error(error.message, '[Something went wrong]')
+    Pop.error('Something went wrong')
   }
 }
 
 // Logout function
-const logout = async () => {
+async function logout() {
   try {
     const accountData = editable.value
     await accountService.logOutAccount(accountData)
     isAuthenticated.value = false
-
+    editable.value = {}
   } catch (error) {
-    Pop.error(error.message, '[Something went wrong]')
+    Pop.error('Something went wrong')
   }
 }
 </script>
