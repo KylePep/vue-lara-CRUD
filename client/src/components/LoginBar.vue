@@ -23,7 +23,6 @@
             Create an Account
           </button>
 
-          <p v-if="errorMessage" class="mt-2 text-red-500">{{ errorMessage }}</p>
         </form>
       </div>
 
@@ -52,15 +51,14 @@
             Already have an account
           </button>
 
-          <p v-if="errorMessage" class="mt-2 text-red-500">{{ errorMessage }}</p>
         </form>
       </div>
 
     </div>
 
     <div v-else>
-      <h2 class="text-2xl mb-4">Welcome, {{ user?.name }}</h2>
-      <button @click="logout" class="py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700">
+      <h2 class="text-2xl mb-4 uppercase text-bold">Welcome, {{ user?.name }}</h2>
+      <button @click="logout" class="py-1 px-2 bg-red-600 text-white rounded-md hover:bg-red-700">
         Logout
       </button>
     </div>
@@ -80,7 +78,7 @@ const user = computed(() => AppState.account)
 const editable = ref({})
 
 // Check if the user is already logged in
-if (AppState.auth_token != '') {
+if (AppState.account.id) {
   isAuthenticated.value = true
 }
 
@@ -89,6 +87,7 @@ const login = async () => {
   try {
     const accountData = editable.value
     await accountService.getAccount(accountData)
+    isAuthenticated.value = true
   } catch (error) {
     Pop.error(error.message, '[Something went wrong]')
   }
@@ -99,6 +98,8 @@ const register = async () => {
   try {
     const accountData = editable.value
     await accountService.createAccount(accountData)
+    isAuthenticated.value = true
+
   } catch (error) {
     Pop.error(error.message, '[Something went wrong]')
   }
@@ -109,6 +110,8 @@ const logout = async () => {
   try {
     const accountData = editable.value
     await accountService.logOutAccount(accountData)
+    isAuthenticated.value = false
+
   } catch (error) {
     Pop.error(error.message, '[Something went wrong]')
   }

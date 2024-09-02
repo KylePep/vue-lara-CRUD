@@ -6,8 +6,8 @@ import { api } from './AxiosService'
 class AccountService {
   async getAccount(accountData) {
     try {
-      const res = await api.post('/login', accountData)
-      AppState.account = new Account(res.data)
+      const res = await api.post('api/login', accountData)
+      AppState.account = new Account(res.data.user)
       AppState.auth_token = res.data.token
     } catch (err) {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
@@ -16,8 +16,9 @@ class AccountService {
 
   async createAccount(accountData) {
     try {
-      const res = await api.post('/register', accountData)
-      AppState.account = new Account(res.data)
+      const res = await api.post('api/register', accountData)
+      AppState.account = new Account(res.data.user)
+      AppState.auth_token = res.data.token
     } catch (error) {
       logger.error(error.message, '[Failed to create account]')
     }
@@ -25,7 +26,7 @@ class AccountService {
 
   async logOutAccount() {
     try {
-      const res = await api.post('/logout', {}, {
+      const res = await api.post('api/logout', {}, {
         headers: {
           Authorization: `Bearer ${AppState.auth_token}`,
         }
