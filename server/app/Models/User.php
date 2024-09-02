@@ -32,6 +32,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function buckets()
+    {
+        return $this->hasMany(bucket::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
