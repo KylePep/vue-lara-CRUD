@@ -1,8 +1,8 @@
 <template>
   <div>
     <ul>
-      <li v-for="item in items" :key="item.id" class="mb-2 p-4 border-b">
-        <ItemCard :itemProp="item" />
+      <li v-for="bucket in buckets" :key="bucket.id" class="mb-2 p-4 border-b">
+        <BucketCard :bucketProp="bucket" />
 
       </li>
     </ul>
@@ -12,30 +12,16 @@
 
 <script>
 import { AppState } from "@/AppState.js";
-import { itemsService } from "@/services/ItemsService.js";
-import Pop from "@/utils/Pop.js";
-import { computed, onMounted } from "vue";
-import ItemCard from "./ItemCard.vue";
+import { computed } from "vue";
+import BucketCard from "./bucketCard.vue";
 
 export default {
   components: {
-    ItemCard,
+    BucketCard,
   },
   setup() {
-    async function getItems() {
-      try {
-        await itemsService.getItems()
-      } catch (error) {
-        Pop.error(error.message, '[Failed to get Items]')
-      }
-    }
-
-    onMounted(() => {
-      getItems()
-    })
     return {
-
-      items: computed(() => AppState.items),
+      buckets: computed(() => AppState.buckets),
 
     }
   }

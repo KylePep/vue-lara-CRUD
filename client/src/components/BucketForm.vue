@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="createItem" class="mb-4">
+  <form @submit.prevent="createBucket" class="mb-4">
     <div class="mb-2">
       <label class="block">Name</label>
       <input type="text" v-model="editable.name" class="border p-2 w-full bg-gray-500" required />
@@ -18,7 +18,7 @@
 
 
 <script>
-import { itemsService } from "@/services/ItemsService.js";
+import { bucketService } from "@/services/BucketService.js";
 import Pop from "@/utils/Pop.js";
 import { ref } from "vue";
 
@@ -28,10 +28,10 @@ export default {
 
     return {
       editable,
-      async createItem() {
+      async createBucket() {
         try {
-          const itemData = editable.value
-          await itemsService.createItem(itemData)
+          const bucketData = editable.value
+          await bucketService.createBucket(bucketData)
           editable.value = {}
         } catch (error) {
           Pop.error(error.message, '[]')

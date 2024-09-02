@@ -1,10 +1,18 @@
 import { AppState } from "@/AppState.js"
 import { api } from "./AxiosService.js"
 import { Bucket } from "@/models/Bucket.js"
+import { logger } from "@/utils/Logger.js";
+
 
 class BucketService {
   async getBuckets() {
-    const res = await api.get('api/buckets')
+    const config = {
+      headers: {
+        Authorization: `Bearer ${AppState.auth_token}`,
+      }
+    };
+    logger.log(config)
+    const res = await api.get('api/buckets', config)
     const buckets = res.data.map(b => new Bucket(b))
     AppState.buckets = buckets
   }
@@ -15,7 +23,12 @@ class BucketService {
   }
 
   async createBucket(bucketData) {
-    const res = await api.post('api/buckets', bucketData)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${AppState.auth_token}`,
+      }
+    };
+    const res = await api.post('api/buckets', bucketData, config)
     const bucket = new Bucket(res.data)
     AppState.buckets.push(bucket)
     return bucket

@@ -19,7 +19,13 @@ Route::post('/items', [ItemController::class, 'store']);
 Route::put('/items/{item}', [ItemController::class, 'update']);
 Route::delete('/items/{item}', [ItemController::class, 'destroy']);
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
+// Route::group(['middleware' => 'auth:sanctum'], function () {
+//     Route::get('/buckets', [BucketController::class, 'show']);
+//     Route::post('/buckets', [BucketController::class, 'store']);
+// });
+
+// Route::get('/buckets', [BucketController::class, 'index']);
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/buckets', [BucketController::class, 'show']);
     Route::post('/buckets', [BucketController::class, 'store']);
 });

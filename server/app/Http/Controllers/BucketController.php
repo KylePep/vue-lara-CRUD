@@ -12,7 +12,8 @@ class BucketController extends Controller
      */
     public function index()
     {
-        //
+        $buckets = bucket::all();
+        return response()->json($buckets);
     }
 
     /**
@@ -43,14 +44,12 @@ class BucketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request, bucket $bucket)
+    public function show(Request $request, Bucket $bucket)
     {
-        if ($bucket->user->id === $request->user()->id){
-            return $bucket;
-        }
+         // Retrieve all buckets associated with the authenticated user
+    $buckets = Bucket::where('user_id', $request->user()->id)->get();
 
-        return response()->json(['message' => 'Cannot find this bucket.'], 404);
-
+    return response()->json($buckets);
     }
 
     /**
