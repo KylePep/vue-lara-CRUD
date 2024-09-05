@@ -13,8 +13,10 @@ import LoginBar from "./components/LoginBar.vue";
       <!-- <RouterLink to="/about">About</RouterLink> -->
     </nav>
   </header>
+  <main class="container mx-auto">
+    <RouterView />
+  </main>
 
-  <RouterView />
 </template>
 
 <style scoped>

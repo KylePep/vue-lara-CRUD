@@ -1,18 +1,17 @@
 <template>
-  <div class="container mx-auto flex">
-    <div v-if="account?.id" class="mx-auto">
+  <div class="flex flex-row ">
+    <div v-if="account?.id" class="basis-1/4 bg-teal-800 px-2">
       <h2 class="text-2xl font-bold mb-4">Buckets </h2>
       <BucketForm />
       <BucketList />
     </div>
 
-    <div v-if="activeBucket.id" class="mx-auto uppercase font-bold text-5xl text-center">
-      {{ activeBucket.name }}
-      {{ activeBucket.description }}
+    <div v-if="activeBucket.id" class="basis-1/2 bg-teal-900">
+      <ActiveBucket :bucketProp="activeBucket" />
     </div>
 
-    <div class="mx-auto">
-      <h2 class="text-2xl font-bold mb-4 mx-auto">Items </h2>
+    <div class="basis-1/4 bg-teal-800 ms-auto px-2">
+      <h2 class="text-2xl font-bold mb-4 ">Items </h2>
       <ItemForm />
       <itemList />
     </div>
@@ -26,6 +25,7 @@ import { computed } from "vue";
 import { AppState } from "@/AppState.js";
 import BucketList from "@/components/BucketList.vue";
 import BucketForm from "@/components/BucketForm.vue";
+import ActiveBucket from "@/components/ActiveBucket.vue";
 
 const account = computed(() => AppState.account)
 const activeBucket = computed(() => AppState.activeBucket)
