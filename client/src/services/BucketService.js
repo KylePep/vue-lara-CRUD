@@ -35,7 +35,12 @@ class BucketService {
   }
 
   async editBucket(bucketData) {
-    const res = await api.put(`api/buckets/${bucketData.id}`, bucketData)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${AppState.auth_token}`,
+      }
+    };
+    const res = await api.put(`api/buckets/${bucketData.id}`, bucketData, config)
     const newBucket = new Bucket(res.data)
     const indexToReplace = AppState.buckets.findIndex((i) => i.id == newBucket.id)
     AppState.buckets[indexToReplace] = newBucket;
@@ -43,10 +48,10 @@ class BucketService {
 
   }
 
-  async deleteItem(itemId) {
-    await api.delete(`api/buckets/${itemId}`, itemId)
-    AppState.buckets = AppState.buckets.filter(a => a.id != itemId)
-  }
+  // async deleteItem(itemId) {
+  //   await api.delete(`api/buckets/${itemId}`, itemId)
+  //   AppState.buckets = AppState.buckets.filter(a => a.id != itemId)
+  // }
 }
 
 export const bucketService = new BucketService()

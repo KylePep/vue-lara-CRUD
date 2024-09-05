@@ -65,7 +65,15 @@ class BucketController extends Controller
      */
     public function update(Request $request, bucket $bucket)
     {
-        //
+        if ($bucket->user_id !== $request->user()->id){
+            return response()->json(['message' => 'Unauthorized: You do not have permission to update this bucket.'], 403);
+        }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string'
+        ]);
+        $bucket->update($validated);
+        return response()->json($bucket);
     }
 
     /**
