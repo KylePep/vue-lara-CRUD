@@ -113,6 +113,7 @@ async function logout() {
     await accountService.logOutAccount(accountData)
     isAuthenticated.value = false
     editable.value = {}
+    AppState.activeBucket = {}
   } catch (error) {
     Pop.error('Something went wrong')
   }

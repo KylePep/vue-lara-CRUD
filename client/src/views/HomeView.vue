@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row ">
+  <div class="flex flex-row bg-teal-900">
     <div v-if="account?.id" class="basis-1/4 bg-teal-800 px-2">
       <h2 class="text-2xl font-bold mb-4">Buckets </h2>
       <BucketForm />

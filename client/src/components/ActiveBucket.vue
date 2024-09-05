@@ -1,7 +1,13 @@
 <template>
   <div class="uppercase font-bold text-5xl text-center">
-    {{ bucket.name }}
-    {{ bucket.description }}
+    <div>
+      <p>
+        {{ bucket.name }}
+      </p>
+      <p>
+        {{ bucket.description }}
+      </p>
+    </div>
     <button @click="editable.edit = !editable.edit"
       class="bg-yellow-500 hover:bg-yellow-700 text-black text-sm py-1 px-2 rounded">Edit</button>
     <button @click="closeActiveBucket"
