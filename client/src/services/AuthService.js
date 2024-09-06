@@ -1,45 +1,33 @@
-// import { initialize } from '@bcwdev/auth0provider-client'
-// import { AppState } from '../AppState'
-// import { audience, clientId, domain } from '../env'
-// import { router } from '../router'
-// import { accountService } from './AccountService'
-// import { api } from './AxiosService'
-// import { socketService } from './SocketService'
+import { AppState } from "@/AppState";
+import { api } from "@/services/AxiosService";
+import { bucketService } from "./BucketService.js";
 
-// export const AuthService = initialize({
-//   domain,
-//   clientId,
-//   audience,
-//   useRefreshTokens: true,
-//   onRedirectCallback: appState => {
-//     router.push(
-//       appState && appState.targetUrl
-//         ? appState.targetUrl
-//         : window.location.pathname
-//     )
-//   }
-// })
+export const checkAuthentication = async () => {
+  // Check if token exists in localStorage
+  const token = sessionStorage.getItem('auth_token');
 
-// AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
-//   api.defaults.headers.authorization = AuthService.bearer
-//   api.interceptors.request.use(refreshAuthToken)
-//   AppState.user = AuthService.user
-//   await accountService.getAccount()
-//   socketService.authenticate(AuthService.bearer)
-//   // NOTE if there is something you want to do once the user is authenticated, place that here
-// })
+  if (token) {
+    // Set the token in the AppState
+    AppState.auth_token = token;
+    // AppState.isAuthenticated = true;
 
-// async function refreshAuthToken(config) {
-//   if (!AuthService.isAuthenticated) { return config }
-//   const expires = AuthService.identity.exp * 1000
-//   const expired = expires < Date.now()
-//   const needsRefresh = expires < Date.now() + (1000 * 60 * 60 * 12)
-//   if (expired) {
-//     await AuthService.loginWithPopup()
-//   } else if (needsRefresh) {
-//     await AuthService.getTokenSilently()
-//     api.defaults.headers.authorization = AuthService.bearer
-//     socketService.authenticate(AuthService.bearer)
-//   }
-//   return config
-// }
+    // Optionally, try to fetch the user profile to validate the token
+    try {
+      const res = await api.get('api/user', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      AppState.account = res.data;
+      await bucketService.getBuckets()
+    } catch (error) {
+      // If the token is invalid or expired, log out
+      console.error('Token validation failed:', error);
+      logout();
+    }
+  }
+  const logout = () => {
+    // Clear the auth token from localStorage and AppState
+    sessionStorage.removeItem('auth_token');
+    AppState.auth_token = null;
+    AppState.account = null;
+  }
+};

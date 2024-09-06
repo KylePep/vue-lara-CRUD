@@ -6,6 +6,10 @@ import { registerGlobalComponents } from './registerGlobalComponents'
 import App from './App.vue'
 import { router } from './router'
 
+import { checkAuthentication } from './services/AuthService'
+
+checkAuthentication()
+
 const root = createApp(App)
 registerGlobalComponents(root)
 

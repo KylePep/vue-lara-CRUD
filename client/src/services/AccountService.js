@@ -8,6 +8,7 @@ class AccountService {
     const res = await api.post('api/login', accountData)
     AppState.account = new Account(res.data.user)
     AppState.auth_token = res.data.token
+    sessionStorage.setItem('auth_token', AppState.auth_token);
     bucketService.getBuckets()
   }
 
@@ -23,6 +24,7 @@ class AccountService {
         Authorization: `Bearer ${AppState.auth_token}`,
       }
     })
+    sessionStorage.removeItem('auth_token')
     AppState.account = {}
     AppState.auth_token = {}
     return res.data

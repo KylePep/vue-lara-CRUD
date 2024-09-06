@@ -72,15 +72,15 @@ import Pop from "@/utils/Pop.js";
 import { accountService } from "@/services/AccountService.js";
 
 // State management
-const isAuthenticated = ref(false)
+const isAuthenticated = computed(() => AppState.account?.id)
 const state = ref('login')
 const user = computed(() => AppState.account)
 const editable = ref({})
 
 // Check if the user is already logged in
-if (AppState.account.id) {
-  isAuthenticated.value = true
-}
+// if (AppState.account.id) {
+//   isAuthenticated.value = true
+// }
 
 // Login function
 async function login() {
