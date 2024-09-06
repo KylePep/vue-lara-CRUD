@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row bg-teal-900">
-    <div v-if="account?.id" class="basis-1/4 bg-teal-800 px-2">
-      <h2 class="text-2xl font-bold mb-4">Buckets </h2>
+    <div v-if="account?.id" class="basis-1/4 bg-teal-800 px-2 flex flex-col justify-items-center">
+      <h2 class="text-2xl font-bold mb-4 text-center">Buckets </h2>
       <BucketForm />
       <BucketList />
     </div>
@@ -10,8 +10,8 @@
       <ActiveBucket :bucketProp="activeBucket" />
     </div>
 
-    <div class="basis-1/4 bg-teal-800 ms-auto px-2">
-      <h2 class="text-2xl font-bold mb-4 ">Items </h2>
+    <div class="basis-1/4 bg-teal-800 ms-auto px-2 flex flex-col justify-items-center">
+      <h2 class="text-2xl font-bold mb-4 text-center">Items </h2>
       <ItemForm />
       <itemList />
     </div>

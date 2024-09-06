@@ -77,11 +77,6 @@ const state = ref('login')
 const user = computed(() => AppState.account)
 const editable = ref({})
 
-// Check if the user is already logged in
-// if (AppState.account.id) {
-//   isAuthenticated.value = true
-// }
-
 // Login function
 async function login() {
   try {

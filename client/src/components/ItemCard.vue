@@ -1,22 +1,24 @@
 <template>
   <div v-if="editable.edit == false || activeItem != item">
-    <p class="font-bold uppercase"><strong>{{ item.name }}</strong></p>
+    <button v-if="activeBucket" class="bg-green-500 hover:bg-green-700 py-0 px-1 rounded text-white">+</button>
+    <p class="font-bold uppercase"><strong>{{ item.name }}</strong>
+    </p>
     <p>{{ item.description }}</p>
     <p>${{ item.price }}</p>
   </div>
   <div v-else>
     <ItemEditForm :editProp="item" @itemEdited="editable.edit = false" />
   </div>
-  <button v-if="activeItem != item" @click="setActiveItem(item)"
+  <!-- <button v-if="activeItem != item" @click="setActiveItem(item)"
     class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
     OPTION
-  </button>
-  <div v-else>
+  </button> -->
+  <!-- <div v-else>
     <button @click="editable.edit = !editable.edit"
       class="text-black bg-yellow-500 hover:bg-yellow-700 py-1 px-2 rounded">EDIT</button>
     <button @click="deleteItem(item)" class="bg-red-500 hover:bg-red-700 py-1 px-2 rounded">DELETE</button>
     <button @click="setActiveItem()" class="bg-gray-500 hover:bg-gray-700 py-1 px-2 rounded">X</button>
-  </div>
+  </div> -->
 </template>
 
 
@@ -42,6 +44,7 @@ export default {
       item: computed(() => props.itemProp),
       editable,
       activeItem: computed(() => AppState.activeItem),
+      activeBucket: computed(() => AppState.activeBucket.id),
 
       setActiveItem(item) {
         if (item == undefined) {
