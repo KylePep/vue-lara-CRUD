@@ -9,6 +9,8 @@ export const AppState = reactive({
   items: [],
   /** @type {import('./models/Item.js').Item{}} */
   activeItem: {},
+  /** @type {import('./models/Item.js').Item[]} */
+  activeBucketItems: {},
 
   /** @type {import('./models/Bucket.js/index.js').Bucket[]} */
   buckets: [],

@@ -1,10 +1,11 @@
 <template>
   <div>
-    <p class="font-bold uppercase"><strong>{{ bucket.name }}</strong></p>
-    <p>{{ bucket.description }}</p>
-    <button @click="setActiveBucket(bucket)" class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
-      SELECT
+    <button @click="setActiveBucket(bucket)"
+      class="font-bold uppercase bg-blue-500 hover:bg-blue-700 rounded px-2 py-1 text-center w-full"><strong>{{
+        bucket.name
+      }}</strong>
     </button>
+    <p>{{ bucket.description }}</p>
   </div>
 </template>
 
@@ -23,21 +24,10 @@ export default {
       bucket: computed(() => props.bucketProp),
 
       setActiveBucket(bucket) {
+        AppState.activeBucketItems = [];
         AppState.activeBucket = bucket;
-      },
-
-      // async deleteItem(item) {
-      //   try {
-      //     const confirmDelete = await Pop.confirm(`Delete ${item.name}`)
-      //     if (!confirmDelete) {
-      //       return
-      //     }
-      //     const itemId = item.id
-      //     await itemsService.deleteItem(itemId)
-      //   } catch (error) {
-      //     Pop.error(error.message, '[Failed to delete Item]')
-      //   }
-      // }
+        //Get bucket Items
+      }
     }
   }
 }

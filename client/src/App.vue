@@ -7,7 +7,7 @@ import LoginBar from "./components/LoginBar.vue";
 <template>
   <header>
     <nav>
-      <h1 class="text-3xl font-bold mb-4 uppercase">bucket list </h1>
+      <h1 class="text-6xl font-bold mb-4 uppercase">bucket list </h1>
       <LoginBar />
       <!-- <RouterLink to="/">Home</RouterLink> -->
       <!-- <RouterLink to="/about">About</RouterLink> -->

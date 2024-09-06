@@ -29,6 +29,14 @@ class AccountService {
     AppState.auth_token = {}
     return res.data
   }
+
+  createConfig() {
+    return {
+      headers: {
+        Authorization: `Bearer ${AppState.auth_token}`,
+      }
+    }
+  }
 }
 
 export const accountService = new AccountService()

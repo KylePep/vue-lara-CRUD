@@ -2,15 +2,12 @@ import { AppState } from "@/AppState.js"
 import { api } from "./AxiosService.js"
 import { Bucket } from "@/models/Bucket.js"
 import { logger } from "@/utils/Logger.js";
+import { accountService } from "./AccountService.js";
 
 
 class BucketService {
   async getBuckets() {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${AppState.auth_token}`,
-      }
-    };
+    const config = accountService.createConfig()
     logger.log(config)
     const res = await api.get('api/buckets', config)
     const buckets = res.data.map(b => new Bucket(b))
@@ -23,11 +20,7 @@ class BucketService {
   }
 
   async createBucket(bucketData) {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${AppState.auth_token}`,
-      }
-    };
+    const config = accountService.createConfig()
     const res = await api.post('api/buckets', bucketData, config)
     const bucket = new Bucket(res.data)
     AppState.buckets.push(bucket)
@@ -35,11 +28,7 @@ class BucketService {
   }
 
   async editBucket(bucketData) {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${AppState.auth_token}`,
-      }
-    };
+    const config = accountService.createConfig()
     const res = await api.put(`api/buckets/${bucketData.id}`, bucketData, config)
     const newBucket = new Bucket(res.data)
     const indexToReplace = AppState.buckets.findIndex((i) => i.id == newBucket.id)

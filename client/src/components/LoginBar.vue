@@ -56,8 +56,8 @@
 
     </div>
 
-    <div v-else>
-      <h2 class="text-2xl mb-4 uppercase text-bold">Welcome, {{ user?.name }}</h2>
+    <div v-else class="">
+      <h2 class="text-2xl uppercase text-bold">Welcome, {{ user?.name }}</h2>
       <button @click="logout" class="py-1 px-2 bg-red-600 text-white rounded-md hover:bg-red-700">
         Logout
       </button>
