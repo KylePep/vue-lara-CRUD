@@ -18,6 +18,6 @@ class bucket extends Model
 
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsToMany(Item::class, 'bucket_items', 'bucket_id', 'item_id');
     }
 }

@@ -13,6 +13,8 @@
 <script>
 import { AppState } from "@/AppState.js";
 import { Item } from "@/models/Item.js";
+import { itemsService } from "@/services/ItemsService.js";
+import Pop from "@/utils/Pop.js";
 import { computed } from "vue";
 
 export default {
@@ -26,7 +28,14 @@ export default {
       setActiveBucket(bucket) {
         AppState.activeBucketItems = [];
         AppState.activeBucket = bucket;
-        //Get bucket Items
+        this.getItemsByBucketId(bucket.id)
+      },
+      async getItemsByBucketId(bucketId) {
+        try {
+          await itemsService.getItemsByBucketId(bucketId)
+        } catch (error) {
+          Pop.error(error.message, '[Something went wrong]')
+        }
       }
     }
   }

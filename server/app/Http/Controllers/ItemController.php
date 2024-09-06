@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bucket;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -30,9 +31,10 @@ class ItemController extends Controller
         return response()->json($item);
     }
 
-    public function show(Item $item)
+    public function show(bucket $bucket)
     {
-        return response()->json($item);
+        $items = $bucket->items;
+        return response()->json($items);
     }
 
     public function edit(Item $item)

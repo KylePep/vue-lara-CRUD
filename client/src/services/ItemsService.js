@@ -2,6 +2,7 @@ import { Item } from "@/models/Item.js"
 import { AppState } from "../AppState.js"
 import { api } from "./AxiosService.js"
 import { logger } from "@/utils/Logger.js"
+import { accountService } from "./AccountService.js"
 
 class ItemsService {
   async getItems() {
@@ -13,6 +14,13 @@ class ItemsService {
     const res = await api.get(`api/items/${itemId}`)
     const item = new Item(res.data)
     AppState.activeItem = item
+  }
+
+  async getItemsByBucketId(bucketId) {
+    const config = accountService.createConfig()
+    const res = await api.get(`api/buckets/${bucketId}/items`, config)
+    const items = res.data.map(i => new Item(i))
+    AppState.activeBucketItems = items
   }
 
   async createItem(itemData) {

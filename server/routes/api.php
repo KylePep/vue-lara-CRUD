@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BucketController;
+use App\Http\Controllers\BucketItemController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
@@ -24,4 +25,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/buckets', [BucketController::class, 'show']);
     Route::post('/buckets', [BucketController::class, 'store']); 
     Route::put('/buckets/{bucket}', [BucketController::class, 'update']); 
+  
+    Route::get('/buckets/{bucket}/items', [ItemController::class, 'show']);
+
+    Route::post('/bucketitems', [BucketItemController::class, 'store']); 
+    Route::delete('/bucketitems/{bucketItem}', [BucketItemController::class, 'destroy']); 
 });

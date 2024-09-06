@@ -20,6 +20,9 @@
       </div>
 
     </div>
+    <div v-for="item in bucketItems" :key="item.id">
+      {{ item.name }}
+    </div>
   </div>
 </template>
 
@@ -44,6 +47,7 @@ export default {
     return {
       editable,
       bucket: computed(() => props.bucketProp),
+      bucketItems: computed(() => AppState.activeBucketItems),
       closeActiveBucket() {
         AppState.activeBucket = {}
       }
