@@ -1,4 +1,5 @@
 <template>
+  <h1 class="text-6xl font-bold mb-4 uppercase text-outline">bucket list </h1>
   <div class="auth-container">
     <div v-if="!isAuthenticated">
 
@@ -17,7 +18,7 @@
           <button type="submit" class="w-full py-2 px-4 bg-green-600 text-white rounded-md hover:bg-green-700">
             Login
           </button>
-          <p>or</p>
+          <p class="text-outline-sm">or</p>
           <button @click="state = 'register'"
             class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700">
             Create an Account
@@ -43,11 +44,13 @@
             <input type="password" id="password" v-model="editable.password" required
               class="mt-1 block w-full p-2 border border-white-300 rounded-md text-black" />
           </div>
-          <button type="submit" class="w-full py-2 px-4 bg-green-600 text-white rounded-md hover:bg-green-700">
+          <button type="submit"
+            class="w-full py-2 px-4 text-green-600 rounded-md hover:text-green-700 text-outline-sm text-lg ">
             Sign Up
           </button>
-          <p>or</p>
-          <button @click="state = 'login'" class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+          <p class=" text-outline-sm">or</p>
+          <button @click="state = 'login'"
+            class="w-full py-2 px-4 text-blue-600 rounded-md hover:text-blue-700 text-lg text-outline-sm">
             Already have an account
           </button>
 
@@ -57,8 +60,8 @@
     </div>
 
     <div v-else class="">
-      <h2 class="text-2xl uppercase text-bold">Welcome, {{ user?.name }}</h2>
-      <button @click="logout" class="py-1 px-2 bg-red-600 text-white rounded-md hover:bg-red-700">
+      <h2 class="text-2xl uppercase text-bold text-outline">{{ user?.name }}</h2>
+      <button @click="logout" class="py-1 px-2 text-red-300 rounded-md hover:text-red-500 text-outline">
         Logout
       </button>
     </div>
@@ -120,5 +123,13 @@ async function logout() {
   max-width: 400px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.text-outline {
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
+.text-outline-sm {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 </style>

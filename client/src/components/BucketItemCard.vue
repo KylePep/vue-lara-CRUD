@@ -63,6 +63,10 @@ export default {
 
       async removeBucketItem(item) {
         try {
+          const confirmDelete = await Pop.confirm(`Delete ${item.name}`)
+          if (!confirmDelete) {
+            return
+          }
           const bucketItemData = {}
           bucketItemData.bucketId = AppState.activeBucket.id
           bucketItemData.itemId = item.id

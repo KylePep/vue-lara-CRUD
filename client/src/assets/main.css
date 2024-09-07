@@ -15,6 +15,11 @@ body {
   color: lightblue;
   background: rgb(40, 52, 52);
   ;
+  background-image:
+    url("/public/assets/bucketListBg.jpg");
+  background-position: 50%, 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   transition:
     color 0.5s,
     background-color 0.5s;

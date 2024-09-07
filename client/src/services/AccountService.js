@@ -27,6 +27,7 @@ class AccountService {
     sessionStorage.removeItem('auth_token')
     AppState.account = {}
     AppState.auth_token = {}
+    AppState.bucketItemsCache = []
     return res.data
   }
 
