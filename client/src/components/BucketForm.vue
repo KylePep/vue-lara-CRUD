@@ -12,9 +12,11 @@
       <input type="text" v-model="editable.description" class="border p-2 w-full bg-black/75 rounded" />
     </div>
 
-    <button type="submit" class="btn-success text-lg font-bold text-outline-sm">Create Bucket</button>
-    <button @click="show = !show" class="btn-danger text-lg font-bold text-outline-sm">
-      Cancel</button>
+    <div class="flex justify-between">
+      <button type="submit" class="btn-success text-lg font-bold text-outline-sm">Create</button>
+      <button @click="show = !show" class="btn-danger text-lg font-bold text-outline-sm">
+        Cancel</button>
+    </div>
   </form>
 </template>
 

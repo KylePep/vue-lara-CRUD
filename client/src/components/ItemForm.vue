@@ -14,9 +14,11 @@
       <label class="block">Price</label>
       <input type="number" step=".01" v-model="editable.price" class="border p-2 w-full bg-black/75 rounded" required />
     </div>
-    <button type="submit" class="btn-success text-lg font-bold text-outline-sm">Create Item</button>
-    <button @click="show = !show" class="btn-danger ps-2 text-lg font-bold text-outline-sm">
-      Cancel</button>
+    <div class="flex justify-between">
+      <button type="submit" class="btn-success text-lg font-bold text-outline-sm">Create</button>
+      <button @click="show = !show" class="btn-danger text-lg font-bold text-outline-sm">
+        Cancel</button>
+    </div>
   </form>
 </template>
 

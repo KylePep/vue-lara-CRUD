@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="item in items" :key="item.id" class="mb-2 p-4 border-b">
+      <li v-for="item in items" :key="item.id" class="mb-2 p-4 border-b border-teal-500">
         <ItemCard :itemProp="item" />
 
       </li>

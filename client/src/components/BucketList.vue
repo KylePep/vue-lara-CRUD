@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="bucket in buckets" :key="bucket.id" class="mb-2 p-4 border-b">
+      <li v-for="bucket in buckets" :key="bucket.id" class="mb-2 p-4 border-b border-teal-500">
         <BucketCard :bucketProp="bucket" />
 
       </li>

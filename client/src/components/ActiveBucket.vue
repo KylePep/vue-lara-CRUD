@@ -1,6 +1,6 @@
 <template>
   <div class="uppercase py-5 font-bold text-3xl text-center">
-    <div class="border-b mx-10 pb-4 relative">
+    <div class="border-b-4 border-teal-500 mx-4 pb-4 relative">
       <button @click="closeActiveBucket" class="absolute top-0 right-0 btn-danger text-sm text-outline-sm">X</button>
       <p>
         {{ bucket.name }}
@@ -18,8 +18,8 @@
       </div>
 
     </div>
-    <div v-for="item in bucketItems" :key="item.id">
-      <BucketItemCard :itemProp="item" />
+    <div v-for="item, index in bucketItems" :key="item.bucketItemId">
+      <BucketItemCard :itemProp="item" :index="index" />
     </div>
   </div>
 </template>

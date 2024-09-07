@@ -12,14 +12,14 @@
 
 <script>
 import { AppState } from "@/AppState.js";
-import { Item } from "@/models/Item.js";
+import { Bucket } from "@/models/Bucket.js";
 import { itemsService } from "@/services/ItemsService.js";
 import Pop from "@/utils/Pop.js";
 import { computed } from "vue";
 
 export default {
   props: {
-    bucketProp: { type: Item }
+    bucketProp: { type: Bucket }
   },
   setup(props) {
     return {

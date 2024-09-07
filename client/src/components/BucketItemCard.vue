@@ -1,15 +1,15 @@
 <template>
-  <div class="flex flex-col text-l my-3">
+  <div class="flex flex-col text-l my-3 border-b border-teal-500/75 pb-4 mx-8">
     <div class="relative" v-if="editable.edit == false || activeItem != item">
       <div class="flex justify-center">
         <p class="font-bold uppercase"><strong>{{ item.name }}</strong>
         </p>
       </div>
       <div class="absolute top-0 right-0">
-        <button @click="removeBucketItem(item)" v-if="activeBucket"
-          class=" m-2 px-1 py-0 btn-danger text-outline-sm">-</button>
+        <button @click="removeBucketItem(item)" v-if="activeBucket" class="px-1 py-0 btn-danger">-</button>
       </div>
-      <p class="text-sm ">{{ item.description }}</p>
+      <div class="absolute top-0 left-0 text-base px-5 font-medium">{{ itemIndex + 1 }}</div>
+      <p class="text-xs font-medium">{{ item.description }}</p>
     </div>
     <div v-else>
       <ItemEditForm :editProp="item" @itemEdited="editable.edit = false" />
@@ -42,13 +42,15 @@ export default {
     ItemEditForm,
   },
   props: {
-    itemProp: { type: Item }
+    itemProp: { type: Item },
+    index: { type: Number }
   },
   setup(props) {
     const editable = ref({})
     editable.value.edit = false
     return {
       item: computed(() => props.itemProp),
+      itemIndex: computed(() => props.index),
       editable,
       activeItem: computed(() => AppState.activeItem),
       activeBucket: computed(() => AppState.activeBucket.id),
