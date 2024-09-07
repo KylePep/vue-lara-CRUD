@@ -4,5 +4,6 @@ export class Item {
     this.description = data.description
     this.name = data.name
     this.price = data.price
+    this.bucketItemId = data.bucketItemId ? data.bucketItemId : null
   }
 }

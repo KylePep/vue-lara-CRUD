@@ -13,10 +13,14 @@ class BucketItemsService {
     AppState.activeBucketItems.push(bucketItem)
   }
 
-  async removeBucketItem(bucketItemId) {
-    await api.delete(`api/bucketitems/${bucketItemId}`)
-    const bucketItemIndex = AppState.activeBucketItems.findIndex(bi => bi.bucketItemId == bucketItemId)
-    AppState.keeps.splice(bucketItemIndex, 1)
+  async removeBucketItem(bucketItemData) {
+    const config = accountService.createConfig()
+    await api.delete(`api/bucketitems/${bucketItemData.bucketItemId}`, config)
+    const bucketItemIndex = AppState.activeBucketItems.findIndex(bi => bi.bucketItemId == bucketItemData.bucketItemId)
+    AppState.activeBucketItems.splice(bucketItemIndex, 1)
+
+    const bucketItemCacheIndex = AppState.bucketItemsCache.findIndex(bi => bi.bucketItemId == bucketItemData.bucketItemId)
+    AppState.bucketItemsCache.splice(bucketItemCacheIndex, 1)
   }
 }
 export const bucketItemsService = new BucketItemsService()

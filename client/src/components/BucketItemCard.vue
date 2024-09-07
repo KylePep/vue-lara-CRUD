@@ -10,6 +10,7 @@
           class=" m-2 px-1 py-0 rounded text-grey-500 hover:text-teal-500 hover:bg-teal-700">-</button>
       </div>
       <p class="text-sm">{{ item.description }}</p>
+      <p class="text-sm">{{ item.bucketItemId }}</p>
     </div>
     <div v-else>
       <ItemEditForm :editProp="item" @itemEdited="editable.edit = false" />
@@ -65,7 +66,8 @@ export default {
           const bucketItemData = {}
           bucketItemData.bucketId = AppState.activeBucket.id
           bucketItemData.itemId = item.id
-          await bucketItemsService.createBucketItem(bucketItemData)
+          bucketItemData.bucketItemId = item.bucketItemId
+          await bucketItemsService.removeBucketItem(bucketItemData)
         } catch (error) {
           Pop.error(error.message, '[]')
         }

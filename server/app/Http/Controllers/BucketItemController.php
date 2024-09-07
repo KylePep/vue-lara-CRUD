@@ -71,6 +71,7 @@ class BucketItemController extends Controller
      */
     public function destroy(bucketItem $bucketItem)
     {
-        //
+        $bucketItem->delete();
+        return response()->json(null, 204);
     }
 }
