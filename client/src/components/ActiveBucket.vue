@@ -21,7 +21,7 @@
 
     </div>
     <div v-for="item in bucketItems" :key="item.id">
-      {{ item.name }}
+      <BucketItemCard :itemProp="item" />
     </div>
   </div>
 </template>
@@ -32,10 +32,12 @@ import { AppState } from "@/AppState.js";
 import { Bucket } from "@/models/Bucket.js";
 import { computed, ref } from "vue";
 import BucketEditForm from "./BucketEditForm.vue";
+import BucketItemCard from "./BucketItemCard.vue";
 
 export default {
   components: {
     BucketEditForm,
+    BucketItemCard
   },
   props: {
     bucketProp: { type: Bucket }

@@ -21,6 +21,8 @@ class ItemsService {
     const res = await api.get(`api/buckets/${bucketId}/items`, config)
     const items = res.data.map(i => new Item(i))
     AppState.activeBucketItems = items
+    const bucketIndex = AppState.buckets.findIndex((i) => i.id == bucketId)
+    AppState.bucketItemsCache[bucketIndex] = items
   }
 
   async createItem(itemData) {

@@ -11,6 +11,8 @@ export const AppState = reactive({
   activeItem: {},
   /** @type {import('./models/Item.js').Item[]} */
   activeBucketItems: {},
+  /** @type {import('./models/Item.js').Item[]} */
+  bucketItemsCache: [],
 
   /** @type {import('./models/Bucket.js/index.js').Bucket[]} */
   buckets: [],

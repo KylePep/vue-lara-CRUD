@@ -28,7 +28,12 @@ export default {
       setActiveBucket(bucket) {
         AppState.activeBucketItems = [];
         AppState.activeBucket = bucket;
-        this.getItemsByBucketId(bucket.id)
+        const bucketIndex = AppState.buckets.findIndex((i) => i.id == bucket.id)
+        if (!AppState.bucketItemsCache[bucketIndex]) {
+          this.getItemsByBucketId(bucket.id)
+        } else {
+          AppState.activeBucketItems = AppState.bucketItemsCache[bucketIndex]
+        }
       },
       async getItemsByBucketId(bucketId) {
         try {
