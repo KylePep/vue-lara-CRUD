@@ -1,9 +1,14 @@
 <template>
-  <div class="flex flex-col text-l my-3 border-b border-teal-500/75 pb-4 mx-8">
+  <div class="flex flex-col text-l my-3 border-b border-teal-500/75 pb-4 mx-2">
     <div class="relative" v-if="editable.edit == false || activeItem != item">
       <div class="flex justify-center">
-        <p class="font-bold uppercase"><strong>{{ item.name }}</strong>
-        </p>
+        <button v-if="checked == false" @click="checked = !checked" class="font-bold uppercase btn-info"><strong>{{
+          item.name }}</strong>
+        </button>
+        <button v-else @click="checked = !checked" class="font-bold line-through uppercase btn-warn"><strong>{{
+          item.name
+        }}</strong>
+        </button>
       </div>
       <div class="absolute top-0 right-0">
         <button @click="removeBucketItem(item)" v-if="activeBucket" class="px-1 py-0 btn-danger">-</button>
@@ -47,10 +52,12 @@ export default {
   },
   setup(props) {
     const editable = ref({})
+    const checked = ref(false)
     editable.value.edit = false
     return {
       item: computed(() => props.itemProp),
       itemIndex: computed(() => props.index),
+      checked,
       editable,
       activeItem: computed(() => AppState.activeItem),
       activeBucket: computed(() => AppState.activeBucket.id),

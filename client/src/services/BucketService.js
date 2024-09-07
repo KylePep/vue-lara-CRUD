@@ -1,14 +1,12 @@
 import { AppState } from "@/AppState.js"
 import { api } from "./AxiosService.js"
 import { Bucket } from "@/models/Bucket.js"
-import { logger } from "@/utils/Logger.js";
 import { accountService } from "./AccountService.js";
 
 
 class BucketService {
   async getBuckets() {
     const config = accountService.createConfig()
-    logger.log(config)
     const res = await api.get('api/buckets', config)
     const buckets = res.data.map(b => new Bucket(b))
     AppState.buckets = buckets

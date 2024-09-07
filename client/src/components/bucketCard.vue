@@ -1,12 +1,21 @@
 <template>
-  <div>
-    <button @click="setActiveBucket(bucket)"
-      class="font-bold uppercase btn-info text-outline-sm text-center w-full"><strong>{{
+  <div class="flex justify-between">
+    <button v-if="checked == false" @click="setActiveBucket(bucket)"
+      class="font-bold uppercase btn-info text-outline-sm text-center"><strong>{{
         bucket.name
       }}</strong>
     </button>
-    <p>{{ bucket.description }}</p>
+
+    <button v-else @click="setActiveBucket(bucket)"
+      class="font-bold line-through rotate-180 uppercase btn-warn text-outline-sm text-center"><strong>{{
+        bucket.name
+      }}</strong>
+    </button>
+    <button v-if="checked == false" @click="checked = !checked"
+      class="btn-warn font-bold text-outline-sm">Kick!</button>
+    <button v-else @click="checked = !checked" class="btn-warn font-bold text-outline-sm">Undo</button>
   </div>
+  <p class="text-center">{{ bucket.description }}</p>
 </template>
 
 
@@ -15,14 +24,16 @@ import { AppState } from "@/AppState.js";
 import { Bucket } from "@/models/Bucket.js";
 import { itemsService } from "@/services/ItemsService.js";
 import Pop from "@/utils/Pop.js";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 export default {
   props: {
     bucketProp: { type: Bucket }
   },
   setup(props) {
+    const checked = ref(false)
     return {
+      checked,
       bucket: computed(() => props.bucketProp),
 
       setActiveBucket(bucket) {
