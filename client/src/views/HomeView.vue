@@ -1,16 +1,16 @@
 <template>
-  <div class="flex flex-row bg-teal-900/75">
-    <div v-if="account?.id" class="basis-1/4 bg-teal-800/75 px-2 flex flex-col justify-items-center">
-      <h2 class="text-2xl font-bold mb-4 text-center">Buckets </h2>
+  <div class="flex flex-row bg-teal-900/50 p-4 rounded">
+    <div v-if="account?.id" class="basis-1/4 bg-teal-800/75 px-2 flex flex-col justify-items-center rounded">
+      <h2 class="text-2xl font-bold mb-4 text-center ">Buckets </h2>
       <BucketForm />
       <BucketList />
     </div>
 
-    <div v-if="activeBucket.id" class="basis-1/2 bg-teal-900/25">
+    <div v-if="activeBucket.id" class="basis-1/2 bg-teal-900/25 rounded">
       <ActiveBucket :bucketProp="activeBucket" />
     </div>
 
-    <div class="basis-1/4 bg-teal-800/75 ms-auto px-2 flex flex-col justify-items-center">
+    <div class="basis-1/4 bg-teal-800/75 ms-auto px-2 flex flex-col justify-items-center rounded">
       <h2 class="text-2xl font-bold mb-4 text-center">Items </h2>
       <ItemForm />
       <itemList />

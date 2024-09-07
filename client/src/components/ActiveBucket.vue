@@ -1,8 +1,7 @@
 <template>
   <div class="uppercase py-5 font-bold text-3xl text-center">
     <div class="border-b mx-10 pb-4 relative">
-      <button @click="closeActiveBucket"
-        class="absolute top-0 right-0 text-white hover:text-gray-400 text-sm py-1 px-2 rounded">X</button>
+      <button @click="closeActiveBucket" class="absolute top-0 right-0 btn-danger text-sm text-outline-sm">X</button>
       <p>
         {{ bucket.name }}
       </p>
@@ -11,9 +10,8 @@
       </p>
 
       <button v-if="editable.edit != true" @click="editable.edit = !editable.edit"
-        class="bg-yellow-500 hover:bg-yellow-700 text-black text-sm py-1 px-2 rounded">Edit</button>
-      <button v-else @click="editable.edit = !editable.edit"
-        class="bg-yellow-500 hover:bg-yellow-700 text-black text-sm py-1 px-2 rounded">Cancel</button>
+        class="btn-warn text-outline-sm text-lg">Edit</button>
+      <button v-else @click="editable.edit = !editable.edit" class="btn-warn text-outline-sm text-lg">Cancel</button>
 
       <div v-if="editable.edit == true">
         <BucketEditForm :editProp="bucket" @bucketEdited="editable.edit = false" />

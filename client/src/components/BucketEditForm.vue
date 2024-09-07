@@ -2,15 +2,15 @@
   <form @submit.prevent="editBucket(editData.id)" class="mb-4 text-sm">
     <div class="mb-2">
       <label class="block">Name</label>
-      <input type="text" v-model="editable.name" class="border p-2 w-full bg-gray-500" required />
+      <input type="text" v-model="editable.name" class="border p-2 w-full bg-black/75 rounded" required />
     </div>
 
     <div class="mb-2">
       <label class="block">Description</label>
-      <input type="text" v-model="editable.description" class="border p-2 w-full bg-gray-500" />
+      <input type="text" v-model="editable.description" class="border p-2 w-full bg-black/75 rounded" />
     </div>
 
-    <button type="submit" class="bg-green-500 text-white p-2 rounded uppercase">Edit Bucket</button>
+    <button type="submit" class="btn-success text-lg text-outline-sm uppercase">Edit Bucket</button>
   </form>
 </template>
 

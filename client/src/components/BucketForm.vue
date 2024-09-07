@@ -1,20 +1,19 @@
 <template>
-  <button v-if="show == false" @click="show = !show"
-    class="bg-green-500 hover:bg-green-700 px-2 py-1 rounded text-white">New
+  <button v-if="show == false" @click="show = !show" class="btn-success text-lg font-bold text-outline-sm">New
     Bucket</button>
   <form v-else @submit.prevent="createBucket" class="mb-4">
 
     <div class="mb-2">
       <label class="block">Name</label>
-      <input type="text" v-model="editable.name" class="border p-2 w-full bg-gray-500" required />
+      <input type="text" v-model="editable.name" class="border p-2 w-full bg-black/75 rounded" required />
     </div>
     <div class="mb-2">
       <label class="block">Description</label>
-      <input type="text" v-model="editable.description" class="border p-2 w-full bg-gray-500" />
+      <input type="text" v-model="editable.description" class="border p-2 w-full bg-black/75 rounded" />
     </div>
 
-    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white p-2 rounded">Create Bucket</button>
-    <button @click="show = !show" class="bg-red-500 hover:bg-red-700 p-2 rounded text-white">
+    <button type="submit" class="btn-success text-lg font-bold text-outline-sm">Create Bucket</button>
+    <button @click="show = !show" class="btn-danger text-lg font-bold text-outline-sm">
       Cancel</button>
   </form>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="setActiveBucket(bucket)"
-      class="font-bold uppercase bg-blue-500 hover:bg-blue-700 rounded px-2 py-1 text-center w-full"><strong>{{
+      class="font-bold uppercase btn-info text-outline-sm text-center w-full"><strong>{{
         bucket.name
       }}</strong>
     </button>

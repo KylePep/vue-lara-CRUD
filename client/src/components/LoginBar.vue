@@ -8,19 +8,18 @@
           <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-white-700">Email</label>
             <input type="email" id="email" v-model="editable.email" required
-              class="mt-1 block w-full p-2 border border-white-300 rounded-md text-black" />
+              class="mt-1 bg-black/75 block w-full p-2 border border-white-300 rounded-md " />
           </div>
           <div class="mb-4">
             <label for="password" class="block text-sm font-medium text-white-700">Password</label>
             <input type="password" id="password" v-model="editable.password" required
-              class="mt-1 block w-full p-2 border border-white-300 rounded-md text-black" />
+              class="bg-black/75 mt-1 block w-full p-2 border border-white-300 rounded-md " />
           </div>
-          <button type="submit" class="w-full py-2 px-4 bg-green-600 text-white rounded-md hover:bg-green-700">
+          <button type="submit" class="text-lg font-bold py-2 px-4 btn-success text-outline-sm">
             Login
           </button>
           <p class="text-outline-sm">or</p>
-          <button @click="state = 'register'"
-            class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+          <button @click="state = 'register'" class="text-lg font-bold py-2 px-4 btn-info text-outline-sm">
             Create an Account
           </button>
 
@@ -32,25 +31,23 @@
           <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-white-700">Name</label>
             <input type="name" id="name" v-model="editable.name" required
-              class="mt-1 block w-full p-2 border border-white-300 rounded-md text-black" />
+              class="mt-1 bg-black/75 block w-full p-2 border border-white-300 rounded-md " />
           </div>
           <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-white-700">Email</label>
             <input type="email" id="email" v-model="editable.email" required
-              class="mt-1 block w-full p-2 border border-white-300 rounded-md text-black" />
+              class="mt-1 bg-black/75 block w-full p-2 border border-white-300 rounded-md " />
           </div>
           <div class="mb-4">
             <label for="password" class="block text-sm font-medium text-white-700">Password</label>
             <input type="password" id="password" v-model="editable.password" required
-              class="mt-1 block w-full p-2 border border-white-300 rounded-md text-black" />
+              class="mt-1 bg-black/75 block w-full p-2 border border-white-300 rounded-md " />
           </div>
-          <button type="submit"
-            class="w-full py-2 px-4 text-green-600 rounded-md hover:text-green-700 text-outline-sm text-lg ">
+          <button type="submit" class="text-lg font-bold py-2 px-4 btn-success text-outline-sm ">
             Sign Up
           </button>
           <p class=" text-outline-sm">or</p>
-          <button @click="state = 'login'"
-            class="w-full py-2 px-4 text-blue-600 rounded-md hover:text-blue-700 text-lg text-outline-sm">
+          <button @click="state = 'login'" class="text-lg font-bold py-2 px-4 btn-info text-outline-sm">
             Already have an account
           </button>
 
@@ -61,7 +58,7 @@
 
     <div v-else class="">
       <h2 class="text-2xl uppercase text-bold text-outline">{{ user?.name }}</h2>
-      <button @click="logout" class="py-1 px-2 text-red-300 rounded-md hover:text-red-500 text-outline">
+      <button @click="logout" class="btn-danger py-1 px-2 text-outline">
         Logout
       </button>
     </div>
@@ -123,13 +120,5 @@ async function logout() {
   max-width: 400px;
   margin: 0 auto;
   padding: 2rem;
-}
-
-.text-outline {
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
-}
-
-.text-outline-sm {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 </style>

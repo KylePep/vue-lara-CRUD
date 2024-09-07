@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col text-l">
+  <div class="flex flex-col text-l my-3">
     <div class="relative" v-if="editable.edit == false || activeItem != item">
       <div class="flex justify-center">
         <p class="font-bold uppercase"><strong>{{ item.name }}</strong>
@@ -7,10 +7,9 @@
       </div>
       <div class="absolute top-0 right-0">
         <button @click="removeBucketItem(item)" v-if="activeBucket"
-          class=" m-2 px-1 py-0 rounded text-grey-500 hover:text-teal-500 hover:bg-teal-700">-</button>
+          class=" m-2 px-1 py-0 btn-danger text-outline-sm">-</button>
       </div>
-      <p class="text-sm">{{ item.description }}</p>
-      <p class="text-sm">{{ item.bucketItemId }}</p>
+      <p class="text-sm ">{{ item.description }}</p>
     </div>
     <div v-else>
       <ItemEditForm :editProp="item" @itemEdited="editable.edit = false" />
