@@ -3,5 +3,6 @@ export class Bucket {
     this.id = data.id
     this.description = data.description
     this.name = data.name
+    this.checked = !!Number(data.checked)
   }
 }

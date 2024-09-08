@@ -60,6 +60,16 @@ class BucketController extends Controller
         //
     }
 
+    public function check(Request $request, bucket $bucket)
+    {
+        if ($bucket->user_id !== $request->user()->id){
+            return response()->json(['message'=> 'Unauthorized: You do not have permission to kick this bucket.'], 403);
+        }
+        $bucket->checked = !$bucket->checked;
+        $bucket->update();
+        return response()->json($bucket);
+    }
+
     /**
      * Update the specified resource in storage.
      */

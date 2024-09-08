@@ -2,9 +2,9 @@
   <div class="uppercase py-5 font-bold text-3xl text-center">
     <div class="border-b-4 border-teal-500 mx-4 pb-4 relative">
       <button @click="closeActiveBucket" class="absolute top-0 right-0 btn-danger text-sm text-outline-sm">X</button>
-      <p>
+      <button class="btn-info uppercase">
         {{ bucket.name }}
-      </p>
+      </button>
       <p class="text-xl">
         {{ bucket.description }}
       </p>

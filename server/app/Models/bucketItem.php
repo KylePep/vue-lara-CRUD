@@ -9,7 +9,7 @@ class bucketItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['bucket_id', 'item_id'];
+    protected $fillable = ['bucket_id', 'item_id', 'checked'];
     
     public function bucket()
     {

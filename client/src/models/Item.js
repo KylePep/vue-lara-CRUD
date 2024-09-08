@@ -5,5 +5,6 @@ export class Item {
     this.name = data.name
     this.price = data.price
     this.bucketItemId = data.bucketItemId ? data.bucketItemId : null
+    this.checked = (typeof data.checked !== 'undefined' && data.checked !== null) ? !!Number(data.checked) : null;
   }
 }

@@ -25,9 +25,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/buckets', [BucketController::class, 'show']);
     Route::post('/buckets', [BucketController::class, 'store']); 
     Route::put('/buckets/{bucket}', [BucketController::class, 'update']); 
+    Route::put('/buckets/{bucket}/check', [BucketController::class, 'check']); 
   
     Route::get('/buckets/{bucket}/items', [ItemController::class, 'show']);
 
     Route::post('/bucketitems', [BucketItemController::class, 'store']); 
+    Route::post('/bucketitems/{bucketItem}/check', [BucketItemController::class, 'check']); 
     Route::delete('/bucketitems/{bucketItem}', [BucketItemController::class, 'destroy']); 
 });

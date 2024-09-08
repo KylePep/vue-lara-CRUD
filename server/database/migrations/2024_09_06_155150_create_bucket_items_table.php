@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Item::class);
             $table->foreignIdFor(bucket::class);
+            $table->boolean('checked');
             $table->timestamps();
         });
     }

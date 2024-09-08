@@ -57,6 +57,10 @@ class BucketItemController extends Controller
     {
         //
     }
+    public function check(bucketItem $bucketItem)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.

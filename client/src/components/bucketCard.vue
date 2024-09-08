@@ -1,19 +1,19 @@
 <template>
-  <div class="flex justify-between">
-    <button v-if="checked == false" @click="setActiveBucket(bucket)"
+  <div class="flex justify-center">
+    <button v-if="checked == false" @click="setOrCheckBucket(bucket)"
       class="font-bold uppercase btn-info text-outline-sm text-center"><strong>{{
         bucket.name
       }}</strong>
     </button>
 
-    <button v-else @click="setActiveBucket(bucket)"
+    <button v-else @click="setOrCheckBucket(bucket)"
       class="font-bold line-through rotate-180 uppercase btn-warn text-outline-sm text-center"><strong>{{
         bucket.name
       }}</strong>
     </button>
-    <button v-if="checked == false" @click="checked = !checked"
+    <!-- <button v-if="checked == false" @click="checked = !checked"
       class="btn-warn font-bold text-outline-sm">Kick!</button>
-    <button v-else @click="checked = !checked" class="btn-warn font-bold text-outline-sm">Undo</button>
+    <button v-else @click="checked = !checked" class="btn-warn font-bold text-outline-sm">Undo</button> -->
   </div>
   <p class="text-center">{{ bucket.description }}</p>
 </template>
@@ -36,14 +36,18 @@ export default {
       checked,
       bucket: computed(() => props.bucketProp),
 
-      setActiveBucket(bucket) {
-        AppState.activeBucketItems = [];
-        AppState.activeBucket = bucket;
-        const bucketIndex = AppState.buckets.findIndex((i) => i.id == bucket.id)
-        if (!AppState.bucketItemsCache[bucketIndex]) {
-          this.getItemsByBucketId(bucket.id)
+      setOrCheckBucket(bucket) {
+        if (AppState.activeBucket.id != bucket.id) {
+          AppState.activeBucketItems = [];
+          AppState.activeBucket = bucket;
+          const bucketIndex = AppState.buckets.findIndex((i) => i.id == bucket.id)
+          if (!AppState.bucketItemsCache[bucketIndex]) {
+            this.getItemsByBucketId(bucket.id)
+          } else {
+            AppState.activeBucketItems = AppState.bucketItemsCache[bucketIndex]
+          }
         } else {
-          AppState.activeBucketItems = AppState.bucketItemsCache[bucketIndex]
+          checked.value = !checked.value
         }
       },
       async getItemsByBucketId(bucketId) {
