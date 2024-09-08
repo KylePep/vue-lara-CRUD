@@ -7,7 +7,7 @@
     </div>
 
     <div v-if="activeBucket.id" class="basis-1/2 bg-teal-900/25 rounded">
-      <ActiveBucket :bucketProp="activeBucket" />
+      <ActiveBucket />
     </div>
 
     <div class="basis-1/4 bg-teal-800/75 ms-auto px-2 flex flex-col justify-items-center rounded">

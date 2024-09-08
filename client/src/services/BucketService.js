@@ -32,7 +32,15 @@ class BucketService {
     const indexToReplace = AppState.buckets.findIndex((i) => i.id == newBucket.id)
     AppState.buckets[indexToReplace] = newBucket;
     AppState.activeBucket = newBucket
+  }
 
+  async checkBucket(bucketId) {
+    const config = accountService.createConfig()
+    const res = await api.put(`api/buckets/${bucketId}/check`, {}, config)
+    const newBucket = new Bucket(res.data)
+    const indexToReplace = AppState.buckets.findIndex((i) => i.id == newBucket.id)
+    AppState.buckets[indexToReplace] = newBucket;
+    AppState.activeBucket = newBucket
   }
 
   // async deleteItem(itemId) {

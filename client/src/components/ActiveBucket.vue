@@ -2,8 +2,16 @@
   <div class="uppercase py-5 font-bold text-3xl text-center">
     <div class="border-b-4 border-teal-500 mx-4 pb-4 relative">
       <button @click="closeActiveBucket" class="absolute top-0 right-0 btn-danger text-sm text-outline-sm">X</button>
-      <button class="btn-info uppercase">
-        {{ bucket.name }}
+      <button v-if="bucket.checked == false" @click="checkBucket(bucket)"
+        class="font-bold uppercase btn-info text-outline-sm text-center"><strong>{{
+          bucket.name
+        }}</strong>
+      </button>
+
+      <button v-else @click="checkBucket(bucket)"
+        class="font-bold line-through rotate-180 uppercase btn-warn text-outline-sm text-center"><strong>{{
+          bucket.name
+        }}</strong>
       </button>
       <p class="text-xl">
         {{ bucket.description }}
@@ -27,27 +35,36 @@
 
 <script>
 import { AppState } from "@/AppState.js";
-import { Bucket } from "@/models/Bucket.js";
 import { computed, ref } from "vue";
 import BucketEditForm from "./BucketEditForm.vue";
 import BucketItemCard from "./BucketItemCard.vue";
+import { bucketService } from "@/services/BucketService.js";
+import Pop from "@/utils/Pop.js";
 
 export default {
   components: {
     BucketEditForm,
     BucketItemCard
   },
-  props: {
-    bucketProp: { type: Bucket }
-  },
 
-  setup(props) {
+  setup() {
     const editable = ref({})
     editable.value.edit = false
     return {
       editable,
-      bucket: computed(() => props.bucketProp),
+      bucket: computed(() => AppState.activeBucket),
       bucketItems: computed(() => AppState.activeBucketItems),
+
+      async checkBucket(bucket) {
+        try {
+          const bucketId = bucket.id
+          const newBucket = await bucketService.checkBucket(bucketId)
+          AppState.activeBucket = newBucket
+        } catch (error) {
+          Pop.error(error.message, '[Kick error, Something went wrong]')
+        }
+      },
+
       closeActiveBucket() {
         AppState.activeBucket = {}
       }

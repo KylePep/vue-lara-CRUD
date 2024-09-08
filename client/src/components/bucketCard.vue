@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <button v-if="checked == false" @click="setOrCheckBucket(bucket)"
+    <button v-if="bucket.checked == false" @click="setOrCheckBucket(bucket)"
       class="font-bold uppercase btn-info text-outline-sm text-center"><strong>{{
         bucket.name
       }}</strong>
@@ -11,9 +11,6 @@
         bucket.name
       }}</strong>
     </button>
-    <!-- <button v-if="checked == false" @click="checked = !checked"
-      class="btn-warn font-bold text-outline-sm">Kick!</button>
-    <button v-else @click="checked = !checked" class="btn-warn font-bold text-outline-sm">Undo</button> -->
   </div>
   <p class="text-center">{{ bucket.description }}</p>
 </template>
@@ -22,21 +19,20 @@
 <script>
 import { AppState } from "@/AppState.js";
 import { Bucket } from "@/models/Bucket.js";
+import { bucketService } from "@/services/BucketService.js";
 import { itemsService } from "@/services/ItemsService.js";
 import Pop from "@/utils/Pop.js";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 
 export default {
   props: {
     bucketProp: { type: Bucket }
   },
   setup(props) {
-    const checked = ref(false)
     return {
-      checked,
       bucket: computed(() => props.bucketProp),
 
-      setOrCheckBucket(bucket) {
+      async setOrCheckBucket(bucket) {
         if (AppState.activeBucket.id != bucket.id) {
           AppState.activeBucketItems = [];
           AppState.activeBucket = bucket;
@@ -47,7 +43,12 @@ export default {
             AppState.activeBucketItems = AppState.bucketItemsCache[bucketIndex]
           }
         } else {
-          checked.value = !checked.value
+          try {
+            const bucketId = bucket.id
+            await bucketService.checkBucket(bucketId)
+          } catch (error) {
+            Pop.error(error.message, '[Kick error, Something went wrong]')
+          }
         }
       },
       async getItemsByBucketId(bucketId) {
