@@ -29,11 +29,13 @@ class BucketItemController extends Controller
     public function store(Request $request)
     {
       $validated = $request->validate(([
+        'creatorId'=> 'required|exists:user,id',
         'bucketId'=> 'required|exists:buckets,id',
         'itemId'=> 'required|exists:items,id'
       ]));
 
       $bucketItem = bucketItem::create([
+        'creator_id' => $validated['creatorId'],
         'bucket_id' => $validated['bucketId'],
         'item_id' => $validated ['itemId']
       ]);
@@ -57,9 +59,11 @@ class BucketItemController extends Controller
     {
         //
     }
-    public function check(bucketItem $bucketItem)
+    
+    public function check(Request $request, bucketItem $bucketItem)
     {
-        if ($bucketItem->bucket->user_id !== auth()->id){
+
+        if ($bucketItem->bucket->user_id !== $request->user()->id()) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
         $bucketItem->checked = !$bucketItem->checked;
@@ -68,7 +72,7 @@ class BucketItemController extends Controller
         $item = $bucketItem->item;
 
         $item->bucketItemId = $bucketItem->id;
-        $item->checked = $bucketItem->checked;
+        $item->checked = !$bucketItem->checked;
 
         return response()->json($item);
     }

@@ -30,6 +30,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/buckets/{bucket}/items', [ItemController::class, 'show']);
 
     Route::post('/bucketitems', [BucketItemController::class, 'store']); 
-    Route::post('/bucketitems/{bucketItem}/check', [BucketItemController::class, 'check']); 
+    Route::put('/bucketitems/{bucketItem}/check', [BucketItemController::class, 'check']); 
     Route::delete('/bucketitems/{bucketItem}', [BucketItemController::class, 'destroy']); 
 });

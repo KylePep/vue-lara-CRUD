@@ -14,9 +14,9 @@ class BucketItemsService {
     AppState.activeBucketItems.push(bucketItem)
   }
 
-  async checkItem(itemData) {
+  async checkBucketItem(bucketItemId) {
     const config = accountService.createConfig()
-    const res = await api.put(`api/bucketitems/${itemData.id}/check`, {}, config)
+    const res = await api.put(`api/bucketitems/${bucketItemId}/check`, {}, config)
     const newBucketItem = new Item(res.data)
     const indexToReplace = AppState.activeBucketItems.findIndex((i) => i.id == newBucketItem.id)
     AppState.activeBucketItems[indexToReplace] = newBucketItem;
