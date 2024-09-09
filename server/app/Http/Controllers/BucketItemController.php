@@ -59,7 +59,18 @@ class BucketItemController extends Controller
     }
     public function check(bucketItem $bucketItem)
     {
-        //
+        if ($bucketItem->bucket->user_id !== auth()->id){
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+        $bucketItem->checked = !$bucketItem->checked;
+        $bucketItem->save();
+
+        $item = $bucketItem->item;
+
+        $item->bucketItemId = $bucketItem->id;
+        $item->checked = $bucketItem->checked;
+
+        return response()->json($item);
     }
 
     /**

@@ -2,6 +2,7 @@ import { api } from "./AxiosService.js";
 import { accountService } from "./AccountService.js";
 import { AppState } from "@/AppState.js";
 import { logger } from "@/utils/Logger.js";
+import { Item } from "@/models/Item.js";
 
 class BucketItemsService {
 
@@ -11,6 +12,15 @@ class BucketItemsService {
     logger.log(res.data)
     const bucketItem = AppState.items.find(i => i.id == res.data.item_id)
     AppState.activeBucketItems.push(bucketItem)
+  }
+
+  async checkItem(itemData) {
+    const config = accountService.createConfig()
+    const res = await api.put(`api/bucketitems/${itemData.id}/check`, {}, config)
+    const newBucketItem = new Item(res.data)
+    const indexToReplace = AppState.activeBucketItems.findIndex((i) => i.id == newBucketItem.id)
+    AppState.activeBucketItems[indexToReplace] = newBucketItem;
+    AppState.bucketItemsCache[indexToReplace] = newBucketItem;
   }
 
   async removeBucketItem(bucketItemData) {

@@ -39,8 +39,8 @@ class ItemsService {
     AppState.items[indexToReplace] = newItem;
     logger.log(newItem, indexToReplace, AppState.items)
     AppState.activeItem = newItem
-
   }
+
 
   async deleteItem(itemId) {
     await api.delete(`api/items/${itemId}`, itemId)
