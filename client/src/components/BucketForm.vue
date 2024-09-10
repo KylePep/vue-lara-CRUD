@@ -1,5 +1,5 @@
 <template>
-  <button v-if="show == false" @click="show = !show" class="btn-success text-lg font-bold text-outline-sm">New
+  <button v-if="show == false" @click="show = !show" class=" btn btn-success text-lg font-bold text-outline-sm">New
     Bucket</button>
   <form v-else @submit.prevent="createBucket" class="mb-4">
 
@@ -13,8 +13,8 @@
     </div>
 
     <div class="flex justify-between">
-      <button type="submit" class="btn-success text-lg font-bold text-outline-sm">Create</button>
-      <button @click="show = !show" class="btn-danger text-lg font-bold text-outline-sm">
+      <button type="submit" class=" btn btn-success text-lg font-bold text-outline-sm">Create</button>
+      <button @click="show = !show" class=" btn btn-danger text-lg font-bold text-outline-sm">
         Cancel</button>
     </div>
   </form>

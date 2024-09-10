@@ -16,11 +16,11 @@
             <input type="password" id="password" v-model="editable.password" required
               class="bg-black/75 mt-1 block w-full p-2 border border-white-300 rounded-md " />
           </div>
-          <button type="submit" class="text-lg font-bold py-2 px-4 btn-success text-outline-sm">
+          <button type="submit" class="text-lg font-bold py-2 px-4  btn btn-success text-outline-sm">
             Login
           </button>
           <p class="text-outline-sm">or</p>
-          <button @click="state = 'register'" class="text-lg font-bold py-2 px-4 btn-info text-outline-sm">
+          <button @click="state = 'register'" class="text-lg font-bold py-2 px-4  btn btn-info text-outline-sm">
             Create an Account
           </button>
 
@@ -44,11 +44,11 @@
             <input type="password" id="password" v-model="editable.password" required
               class="mt-1 bg-black/75 block w-full p-2 border border-white-300 rounded-md " />
           </div>
-          <button type="submit" class="text-lg font-bold py-2 px-4 btn-success text-outline-sm ">
+          <button type="submit" class="text-lg font-bold py-2 px-4  btn btn-success text-outline-sm ">
             Sign Up
           </button>
           <p class=" text-outline-sm">or</p>
-          <button @click="state = 'login'" class="text-lg font-bold py-2 px-4 btn-info text-outline-sm">
+          <button @click="state = 'login'" class="text-lg font-bold py-2 px-4  btn btn-info text-outline-sm">
             Already have an account
           </button>
 
@@ -59,7 +59,7 @@
 
     <div v-else class="">
       <h2 class="text-2xl uppercase text-bold text-outline">{{ user?.name }}</h2>
-      <button @click="logout" class="btn-danger py-1 px-2 ">
+      <button @click="logout" class=" btn btn-danger py-1 px-2 ">
         Logout
       </button>
     </div>

@@ -30,60 +30,56 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.btn-success {
-  color: rgb(16 185 129);
+.btn {
   background-color: none;
   border: none;
   text-shadow: -1px -1px 0 rgb(3, 50, 37), 1px -1px 0 rgb(3, 50, 37), -1px 1px 0 rgb(3, 50, 37), 1px 1px 0 rgb(3, 50, 37);
 }
 
-.btn-success:hover {
-  color: rgb(110 231 183);
+.btn:hover {
   -webkit-animation: 1s ease-in-out infinite alternate glow;
   -moz-animation: 1s ease-in-out infinite alternate glow;
   animation: 1s ease-in-out infinite alternate glow;
+}
+
+.btn-success {
+  color: rgb(16 185 129);
+}
+
+.btn-success:hover {
+  color: rgb(110 231 183);
 }
 
 .btn-warn {
   color: rgb(254 240 138);
-  background-color: none;
-  border: none;
 }
 
 .btn-warn:hover {
   color: rgb(254 249 195);
-  -webkit-animation: 1s ease-in-out infinite alternate glow;
-  -moz-animation: 1s ease-in-out infinite alternate glow;
-  animation: 1s ease-in-out infinite alternate glow;
+}
+
+.btn-check {
+  color: rgb(254, 200, 138);
+}
+
+.btn-check:hover {
+  color: rgb(254 200 195);
 }
 
 .btn-danger {
   color: rgb(239 68 68);
-  background-color: none;
-  border: none;
-  font-weight: bold;
-  text-shadow: -1px -1px 0 rgb(92, 13, 13), 1px -1px 0 rgb(92, 13, 13), -1px 1px 0 rgb(92, 13, 13), 1px 1px 0 rgb(92, 13, 13);
 }
 
 .btn-danger:hover {
   color: rgb(252 165 165);
-  -webkit-animation: 1s ease-in-out infinite alternate glow;
-  -moz-animation: 1s ease-in-out infinite alternate glow;
-  animation: 1s ease-in-out infinite alternate glow;
 }
 
 .btn-info {
   color: rgb(34 211 238);
-  background-color: none;
-  border: none;
-  text-shadow: -1px -1px 0 rgb(8, 55, 66), 1px -1px 0 rgb(8, 55, 66), -1px 1px 0 rgb(8, 55, 66), 1px 1px 0 rgb(8, 55, 66);
 }
 
 .btn-info:hover {
   color: rgb(165 243 252);
-  -webkit-animation: 1s ease-in-out infinite alternate glow;
-  -moz-animation: 1s ease-in-out infinite alternate glow;
-  animation: 1s ease-in-out infinite alternate glow;
 }
 
 @keyframes glow {

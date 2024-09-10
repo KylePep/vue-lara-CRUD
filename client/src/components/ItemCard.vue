@@ -6,7 +6,7 @@
         </p>
         <div>
           <button @click="addBucketItem(item)" v-if="activeBucket"
-            class="btn-success text-lg text-outline-sm font-bold">+</button>
+            class=" btn btn-success text-lg text-outline-sm font-bold">+</button>
         </div>
       </div>
       <p>{{ item.description }}</p>

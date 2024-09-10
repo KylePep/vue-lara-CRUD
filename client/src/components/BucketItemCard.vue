@@ -3,16 +3,16 @@
     <div class="relative">
       <div class="flex justify-center">
         <button v-if="item.checked == false" @click="checkBucketItem(item)"
-          class="font-bold uppercase btn-info"><strong>{{
+          class="font-bold uppercase  btn btn-info"><strong>{{
             item.name }}</strong>
         </button>
-        <button v-else @click="checkBucketItem(item)" class="font-bold line-through uppercase btn-warn"><strong>{{
+        <button v-else @click="checkBucketItem(item)" class="font-bold line-through uppercase  btn btn-check"><strong>{{
           item.name
             }}</strong>
         </button>
       </div>
       <div class="absolute top-0 right-0">
-        <button @click="removeBucketItem(item)" class="px-1 py-0 btn-danger">-</button>
+        <button @click="removeBucketItem(item)" class="px-1 py-0  btn btn-danger">-</button>
       </div>
       <div class="absolute top-0 left-0 text-base px-5 font-medium">{{ itemIndex + 1 }}</div>
       <p class="text-xs font-medium">{{ item.description }}</p>

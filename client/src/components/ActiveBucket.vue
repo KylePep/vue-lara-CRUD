@@ -1,15 +1,16 @@
 <template>
   <div class="uppercase py-5 font-bold text-3xl text-center">
     <div class="border-b-4 border-teal-500 mx-4 pb-4 relative">
-      <button @click="closeActiveBucket" class="absolute top-0 right-0 btn-danger text-sm text-outline-sm">X</button>
+      <button @click="closeActiveBucket"
+        class="absolute top-0 right-0  btn btn-danger text-sm text-outline-sm">X</button>
       <button v-if="bucket.checked == false" @click="checkBucket(bucket)"
-        class="font-bold uppercase btn-info text-outline-sm text-center"><strong>{{
+        class="font-bold uppercase  btn btn-info text-outline-sm text-center"><strong>{{
           bucket.name
         }}</strong>
       </button>
 
       <button v-else @click="checkBucket(bucket)"
-        class="font-bold line-through rotate-180 uppercase btn-warn text-outline-sm text-center"><strong>{{
+        class="font-bold line-through rotate-180 uppercase  btn btn-check text-outline-sm text-center"><strong>{{
           bucket.name
         }}</strong>
       </button>
@@ -18,8 +19,9 @@
       </p>
 
       <button v-if="editable.edit != true" @click="editable.edit = !editable.edit"
-        class="btn-warn text-outline-sm text-lg">Edit</button>
-      <button v-else @click="editable.edit = !editable.edit" class="btn-warn text-outline-sm text-lg">Cancel</button>
+        class=" btn btn-warn text-outline-sm text-lg">Edit</button>
+      <button v-else @click="editable.edit = !editable.edit"
+        class=" btn btn-warn text-outline-sm text-lg">Cancel</button>
 
       <div v-if="editable.edit == true">
         <BucketEditForm :editProp="bucket" @bucketEdited="editable.edit = false" />

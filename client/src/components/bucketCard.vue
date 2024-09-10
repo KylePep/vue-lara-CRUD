@@ -1,13 +1,13 @@
 <template>
   <div class="flex justify-center">
     <button v-if="bucket.checked == false" @click="setOrCheckBucket(bucket)"
-      class="font-bold uppercase btn-info text-outline-sm text-center"><strong>{{
+      class="font-bold uppercase  btn btn-info text-outline-sm text-center"><strong>{{
         bucket.name
       }}</strong>
     </button>
 
     <button v-else @click="setOrCheckBucket(bucket)"
-      class="font-bold line-through rotate-180 uppercase btn-warn text-outline-sm text-center"><strong>{{
+      class="font-bold line-through rotate-180 uppercase  btn btn-check text-outline-sm text-center"><strong>{{
         bucket.name
       }}</strong>
     </button>

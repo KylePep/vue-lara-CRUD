@@ -10,7 +10,7 @@
       <input type="text" v-model="editable.description" class="border p-2 w-full bg-black/75 rounded" />
     </div>
 
-    <button type="submit" class="btn-success text-lg text-outline-sm uppercase">Edit Bucket</button>
+    <button type="submit" class=" btn btn-success text-lg text-outline-sm uppercase">Edit Bucket</button>
   </form>
 </template>
 
