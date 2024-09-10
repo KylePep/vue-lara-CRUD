@@ -14,6 +14,7 @@
           bucket.name
         }}</strong>
       </button>
+
       <p class="text-xl">
         {{ bucket.description }}
       </p>

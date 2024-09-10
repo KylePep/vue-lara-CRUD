@@ -1,15 +1,19 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import LoginBar from "./components/LoginBar.vue";
+import HeroSection from "./components/HeroSection.vue";
+import NavBar from "./components/NavBar.vue";
 </script>
 
 <template>
   <header>
+    <HeroSection />
     <nav>
       <LoginBar />
+      <NavBar />
     </nav>
   </header>
-  <main class="container mx-auto">
+  <main>
     <RouterView />
   </main>
 
@@ -17,6 +21,7 @@ import LoginBar from "./components/LoginBar.vue";
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+
 
 .protest-guerrilla-regular {
   font-family: "Protest Guerrilla", sans-serif;
@@ -27,8 +32,6 @@ import LoginBar from "./components/LoginBar.vue";
 
 nav {
   width: 100%;
-  font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
 }
 </style>

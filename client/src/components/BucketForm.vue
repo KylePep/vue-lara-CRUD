@@ -12,7 +12,7 @@
       <input type="text" v-model="editable.description" class="border p-2 w-full bg-black/75 rounded" />
     </div>
 
-    <div class="flex justify-between">
+    <div class="flex justify-between px-3">
       <button type="submit" class=" btn btn-success text-lg font-bold text-outline-sm">Create</button>
       <button @click="show = !show" class=" btn btn-danger text-lg font-bold text-outline-sm">
         Cancel</button>

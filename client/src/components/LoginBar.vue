@@ -1,6 +1,5 @@
 <template>
-  <h1 class="text-6xl mb-4 uppercase text-outline protest-guerrilla-regular">bucket list </h1>
-  <h2 class="text-base font-bold mb-4  text-outline">What's left before it's done? </h2>
+
   <div class="auth-container">
     <div v-if="!isAuthenticated">
 
@@ -57,8 +56,8 @@
 
     </div>
 
-    <div v-else class="">
-      <h2 class="text-2xl uppercase text-bold text-outline">{{ user?.name }}</h2>
+    <div v-else>
+      <h2 class="text-5xl font-bold uppercase text-bold text-outline">{{ user?.name }}</h2>
       <button @click="logout" class=" btn btn-danger py-1 px-2 ">
         Logout
       </button>
@@ -120,6 +119,6 @@ async function logout() {
 .auth-container {
   max-width: 400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding-bottom: 2rem;
 }
 </style>

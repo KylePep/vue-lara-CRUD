@@ -1,5 +1,6 @@
 <template>
-  <button v-if="show == false" @click="show = !show" class=" btn btn-success text-lg font-bold text-outline-sm">New
+  <button v-if="show == false" @click="show = !show"
+    class=" btn btn-success text-lg font-bold text-outline-sm text-center w-full">New
     Item</button>
   <form v-else @submit.prevent="createItem" class="mb-4">
     <div class="mb-2">
@@ -14,7 +15,7 @@
       <label class="block">Price</label>
       <input type="number" step=".01" v-model="editable.price" class="border p-2 w-full bg-black/75 rounded" required />
     </div>
-    <div class="flex justify-between">
+    <div class="flex justify-between px-3">
       <button type="submit" class=" btn btn-success text-lg font-bold text-outline-sm">Create</button>
       <button @click="show = !show" class=" btn btn-danger text-lg font-bold text-outline-sm">
         Cancel</button>
