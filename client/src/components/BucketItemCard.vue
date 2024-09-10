@@ -8,7 +8,7 @@
         </button>
         <button v-else @click="checkBucketItem(item)" class="font-bold line-through uppercase btn-warn"><strong>{{
           item.name
-            }}</strong>
+        }}</strong>
         </button>
       </div>
       <div class="absolute top-0 right-0">
@@ -43,7 +43,6 @@ export default {
         try {
           const bucketItemId = item.bucketItemId
           await bucketItemsService.checkBucketItem(bucketItemId)
-          // AppState.activeBucket = newBucketItem
         } catch (error) {
           Pop.error(error.message, '[Kick error, Something went wrong]')
         }

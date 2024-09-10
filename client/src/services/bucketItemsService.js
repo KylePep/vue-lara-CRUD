@@ -10,17 +10,19 @@ class BucketItemsService {
     const config = accountService.createConfig()
     const res = await api.post('api/bucketitems', bucketItemData, config)
     logger.log(res.data)
-    const bucketItem = AppState.items.find(i => i.id == res.data.item_id)
+    const bucketItem = new Item(res.data)
     AppState.activeBucketItems.push(bucketItem)
   }
 
   async checkBucketItem(bucketItemId) {
     const config = accountService.createConfig()
+    const bucketId = AppState.activeBucket.id
     const res = await api.put(`api/bucketitems/${bucketItemId}/check`, {}, config)
     const newBucketItem = new Item(res.data)
     const indexToReplace = AppState.activeBucketItems.findIndex((i) => i.id == newBucketItem.id)
+    const bucketIndex = AppState.buckets.findIndex((i) => i.id == bucketId)
     AppState.activeBucketItems[indexToReplace] = newBucketItem;
-    AppState.bucketItemsCache[indexToReplace] = newBucketItem;
+    AppState.bucketItemsCache[bucketIndex][indexToReplace] = newBucketItem;
   }
 
   async removeBucketItem(bucketItemData) {
