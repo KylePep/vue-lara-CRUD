@@ -8,13 +8,13 @@
         </button>
         <button v-else @click="checkBucketItem(item)" class="font-bold line-through uppercase  btn btn-check"><strong>{{
           item.name
-            }}</strong>
+        }}</strong>
         </button>
       </div>
       <div class="absolute top-0 right-0">
         <button @click="removeBucketItem(item)" class="px-1 py-0  btn btn-danger">-</button>
       </div>
-      <div class="absolute top-0 left-0 text-base px-5 font-medium">{{ itemIndex + 1 }}</div>
+      <div class="absolute top-0 left-0 text-base px-5 font-medium">{{ itemIndex + 1 }}.</div>
       <p class="text-xs font-medium">{{ item.description }}</p>
     </div>
   </div>
