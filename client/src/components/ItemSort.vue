@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-// import ItemForm from "./ItemForm.vue";
+import ItemForm from "./ItemForm.vue";
 import ItemList from "./ItemList.vue";
 const mode = ref('public')
 </script>
@@ -11,12 +11,12 @@ const mode = ref('public')
     <div v-if="mode != 'public'">
       <h2 class="text-2xl font-bold text-center">Your Items </h2>
       <button @click="mode = 'public'" class="text-base font-bld btn btn-info text-center w-full">Public Items</button>
-      <!-- <ItemForm /> -->
+      <ItemForm />
     </div>
     <div v-else>
       <h2 class="text-2xl font-bold text-center">Public Items </h2>
       <button @click="mode = 'private'" class="text-base font-bld btn btn-info text-center w-full">Your Items</button>
-      <!-- <ItemForm /> -->
+      <ItemForm />
       <ItemList />
     </div>
   </div>

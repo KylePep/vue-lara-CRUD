@@ -41,8 +41,6 @@ body {
 }
 
 .btn {
-  /* background-color: transparent; */
-  /* Changed from 'none' to 'transparent' */
   border: none;
   color: var(--btn-color, lightblue);
   /* Default color */

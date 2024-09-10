@@ -10,7 +10,7 @@
       </button>
 
       <button v-else @click="checkBucket(bucket)"
-        class="font-bold line-through rotate-180 uppercase  btn btn-check text-outline-sm text-center"><strong>{{
+        class="font-bold uppercase  btn btn-check text-outline-sm text-center"><strong>{{
           bucket.name
         }}</strong>
       </button>

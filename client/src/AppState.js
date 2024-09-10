@@ -17,6 +17,9 @@ export const AppState = reactive({
   /** @type {import('./models/Bucket.js/index.js').Bucket[]} */
   buckets: [],
   /** @type {import('./models/Bucket.js/index.js').Bucket{}} */
-  activeBucket: {}
+  activeBucket: {},
+
+  bucketForm: false,
+  itemForm: false
 
 })

@@ -1,7 +1,5 @@
 <template>
-  <button v-if="show == false" @click="show = !show" class=" btn btn-success text-lg font-bold text-outline-sm">New
-    Bucket</button>
-  <form v-else @submit.prevent="createBucket" class="mb-4">
+  <form v-if="showForm != false" @submit.prevent="createBucket" class="mb-4">
 
     <div class="mb-2">
       <label class="block">Name</label>
@@ -14,7 +12,7 @@
 
     <div class="flex justify-between px-3">
       <button type="submit" class=" btn btn-success text-lg font-bold text-outline-sm">Create</button>
-      <button @click="show = !show" class=" btn btn-danger text-lg font-bold text-outline-sm">
+      <button @click="setForm('bucketForm')" class=" btn btn-danger text-lg font-bold text-outline-sm">
         Cancel</button>
     </div>
   </form>
@@ -22,18 +20,23 @@
 
 
 <script>
+import { AppState } from "@/AppState.js";
 import { bucketService } from "@/services/BucketService.js";
 import Pop from "@/utils/Pop.js";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 export default {
   setup() {
     const editable = ref({})
-    const show = ref(false)
 
     return {
       editable,
-      show,
+      showForm: computed(() => AppState.bucketForm),
+
+      setForm(form) {
+        AppState[form] = !AppState[form]
+      },
+
       async createBucket() {
         try {
           const bucketData = editable.value

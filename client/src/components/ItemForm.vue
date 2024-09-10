@@ -1,8 +1,5 @@
 <template>
-  <button v-if="show == false" @click="show = !show"
-    class=" btn btn-success text-lg font-bold text-outline-sm text-center w-full">New
-    Item</button>
-  <form v-else @submit.prevent="createItem" class="mb-4">
+  <form v-if="showForm != false" @submit.prevent="createItem" class="mb-4">
     <div class="mb-2">
       <label class="block">Name</label>
       <input type="text" v-model="editable.name" class="border p-2 w-full bg-black/75 rounded" required />
@@ -17,7 +14,7 @@
     </div>
     <div class="flex justify-between px-3">
       <button type="submit" class=" btn btn-success text-lg font-bold text-outline-sm">Create</button>
-      <button @click="show = !show" class=" btn btn-danger text-lg font-bold text-outline-sm">
+      <button @click="setForm('itemForm')" class=" btn btn-danger text-lg font-bold text-outline-sm">
         Cancel</button>
     </div>
   </form>
@@ -25,18 +22,23 @@
 
 
 <script>
+import { AppState } from "@/AppState.js";
 import { itemsService } from "@/services/ItemsService.js";
 import Pop from "@/utils/Pop.js";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 export default {
   setup() {
     const editable = ref({})
-    const show = ref(false)
 
     return {
       editable,
-      show,
+      showForm: computed(() => AppState.itemForm),
+
+      setForm(form) {
+        AppState[form] = !AppState[form]
+      },
+
       async createItem() {
         try {
           const itemData = editable.value
