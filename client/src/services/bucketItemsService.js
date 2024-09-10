@@ -26,13 +26,16 @@ class BucketItemsService {
   }
 
   async removeBucketItem(bucketItemData) {
+
     const config = accountService.createConfig()
     await api.delete(`api/bucketitems/${bucketItemData.bucketItemId}`, config)
+
     const bucketItemIndex = AppState.activeBucketItems.findIndex(bi => bi.bucketItemId == bucketItemData.bucketItemId)
     AppState.activeBucketItems.splice(bucketItemIndex, 1)
 
-    const bucketItemCacheIndex = AppState.bucketItemsCache.findIndex(bi => bi.bucketItemId == bucketItemData.bucketItemId)
-    AppState.bucketItemsCache.splice(bucketItemCacheIndex, 1)
+    const bucketIndex = AppState.buckets.findIndex((i) => i.id == bucketItemData.bucketId)
+
+    AppState.bucketItemsCache[bucketIndex] = AppState.activeBucketItems
   }
 }
 export const bucketItemsService = new BucketItemsService()

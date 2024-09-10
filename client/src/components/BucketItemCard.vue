@@ -8,11 +8,11 @@
         </button>
         <button v-else @click="checkBucketItem(item)" class="font-bold line-through uppercase btn-warn"><strong>{{
           item.name
-        }}</strong>
+            }}</strong>
         </button>
       </div>
       <div class="absolute top-0 right-0">
-        <button @click="removeBucketItem(item)" v-if="activeBucket" class="px-1 py-0 btn-danger">-</button>
+        <button @click="removeBucketItem(item)" class="px-1 py-0 btn-danger">-</button>
       </div>
       <div class="absolute top-0 left-0 text-base px-5 font-medium">{{ itemIndex + 1 }}</div>
       <p class="text-xs font-medium">{{ item.description }}</p>
@@ -27,6 +27,7 @@ import { Item } from "@/models/Item.js";
 import Pop from "@/utils/Pop.js";
 import { computed } from "vue";
 import { bucketItemsService } from "@/services/bucketItemsService.js";
+import { logger } from "@/utils/Logger.js";
 
 export default {
   props: {
@@ -56,10 +57,10 @@ export default {
           }
           const bucketItemData = {}
           bucketItemData.bucketId = AppState.activeBucket.id
-          bucketItemData.itemId = item.id
           bucketItemData.bucketItemId = item.bucketItemId
           await bucketItemsService.removeBucketItem(bucketItemData)
         } catch (error) {
+          logger.log('[ERROR MADE IT HERE]')
           Pop.error(error.message, '[]')
         }
       }
