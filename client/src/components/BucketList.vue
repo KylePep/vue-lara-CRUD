@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="bucket in buckets" :key="bucket.id" class="mb-2 p-4 border-b border-teal-500">
-        <BucketCard :bucketProp="bucket" />
+  <div class="bucket-list-container">
+    <div v-for="bucket in buckets" :key="bucket.id" class="mb-2 p-4 border-b border-teal-500">
+      <BucketCard :bucketProp="bucket" />
 
-      </li>
-    </ul>
+    </div>
   </div>
 </template>
 
@@ -29,4 +27,9 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.bucket-list-container {
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+</style>

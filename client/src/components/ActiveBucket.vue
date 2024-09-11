@@ -29,8 +29,10 @@
       </div>
 
     </div>
-    <div v-for="item, index in bucketItems" :key="item.bucketItemId">
-      <BucketItemCard :itemProp="item" :index="index" />
+    <div class="item-list-container">
+      <div v-for="item, index in bucketItems" :key="item.bucketItemId">
+        <BucketItemCard :itemProp="item" :index="index" />
+      </div>
     </div>
   </div>
 </template>
@@ -77,4 +79,9 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.item-list-container {
+  max-height: 40vh;
+  overflow-y: scroll;
+}
+</style>
