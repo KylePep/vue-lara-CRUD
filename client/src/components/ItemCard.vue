@@ -1,31 +1,19 @@
 <template>
   <div class="flex flex-col">
-    <div v-if="editable.edit == false || activeItem != item">
-      <div class="flex justify-between">
-        <p class="font-bold uppercase"><strong>{{ item.name }}</strong>
-        </p>
-        <div>
-          <button @click="addBucketItem(item)" v-if="activeBucket"
-            class=" btn btn-success text-lg text-outline-sm font-bold">+</button>
-        </div>
-      </div>
-      <p>{{ item.description }}</p>
-      <p>${{ item.price }}</p>
-    </div>
-    <div v-else>
-      <ItemEditForm :editProp="item" @itemEdited="editable.edit = false" />
-    </div>
 
-    <!-- <button v-if="activeItem != item" @click="setActiveItem(item)"
-      class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
-      OPTION
-    </button> -->
-    <!-- <div v-else>
-      <button @click="editable.edit = !editable.edit"
-        class="text-black bg-yellow-500 hover:bg-yellow-700 py-1 px-2 rounded">EDIT</button>
-      <button @click="deleteItem(item)" class="bg-red-500 hover:bg-red-700 py-1 px-2 rounded">DELETE</button>
-      <button @click="setActiveItem()" class="bg-gray-500 hover:bg-gray-700 py-1 px-2 rounded">X</button>
-    </div> -->
+    <div class="flex justify-between">
+      <p @click="[route.name != 'Home' ? setActiveItem(item) : '']"
+        :class="[route.name != 'Home' ? 'btn btn-info' : '']" class="font-bold uppercase"><strong>{{ item.name
+          }}</strong>
+      </p>
+      <div>
+        <button @click="addBucketItem(item)" v-if="activeBucket"
+          class=" btn btn-success text-lg text-outline-sm font-bold">+</button>
+      </div>
+    </div>
+    <p>{{ item.description }}</p>
+    <p>${{ item.price }}</p>
+
   </div>
 </template>
 
@@ -35,30 +23,24 @@ import { AppState } from "@/AppState.js";
 import { Item } from "@/models/Item.js";
 import { itemsService } from "@/services/ItemsService.js";
 import Pop from "@/utils/Pop.js";
-import { computed, ref } from "vue";
-import ItemEditForm from "./ItemEditForm.vue";
+import { computed } from "vue";
 import { bucketItemsService } from "@/services/bucketItemsService.js";
+import { useRoute } from "vue-router";
 
 export default {
-  components: {
-    ItemEditForm,
-  },
   props: {
     itemProp: { type: Item }
   },
   setup(props) {
-    const editable = ref({})
-    editable.value.edit = false
+    const route = useRoute()
     return {
+      route,
       item: computed(() => props.itemProp),
-      editable,
       activeItem: computed(() => AppState.activeItem),
       activeBucket: computed(() => AppState.activeBucket.id),
 
       setActiveItem(item) {
-        if (item == undefined) {
-          editable.value.edit = false
-        }
+        AppState.activeItem = {}
         AppState.activeItem = item;
       },
 

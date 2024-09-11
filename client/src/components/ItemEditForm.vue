@@ -1,47 +1,53 @@
 <template>
-  <form @submit.prevent="editItem(editData.id)" class="mb-4">
+  <form @submit.prevent="editActiveItem()" class="mb-4">
     <div class="mb-2">
       <label class="block">Name</label>
-      <input type="text" v-model="editable.name" class="border p-2 bg-gray-500" required />
+      <input type="text" v-model="editable.name" class="border p-2 w-full bg-black/75 rounded" required />
     </div>
     <div class="mb-2">
       <label class="block">Description</label>
-      <input type="text" v-model="editable.description" class="border p-2 bg-gray-500" />
+      <input type="text" v-model="editable.description" class="border p-2 w-full bg-black/75 rounded" />
     </div>
     <div class="mb-2">
       <label class="block">Price</label>
-      <input type="number" step=".01" v-model="editable.price" class="border p-2 bg-gray-500" required />
+      <input type="number" step=".01" v-model="editable.price" class="border p-2 w-full bg-black/75 rounded" required />
     </div>
-    <button type="submit" class="bg-green-500 text-white p-2 rounded">Submit Change</button>
+    <button type="submit" class=" btn btn-success text-3xl uppercase font-bold text-outline-sm">Update</button>
   </form>
 </template>
 
 
 <script>
-import { Item } from "@/models/Item.js";
+import { AppState } from "@/AppState.js";
 import { itemsService } from "@/services/ItemsService.js";
 import Pop from "@/utils/Pop.js";
-import { computed, ref } from "vue";
+import { ref, watchEffect } from "vue";
 
 export default {
 
-  emits: (['itemEdited']),
-  props: {
-    editProp: { type: Item }
-  },
+  emits: ['itemEdited'],
   setup(props, ctx) {
     const editable = ref({})
-    editable.value.name = props.editProp.name
-    editable.value.description = props.editProp.description
-    editable.value.price = props.editProp.price
+    editable.value.name = AppState.activeItem.name
+    editable.value.description = AppState.activeItem.description
+    editable.value.price = AppState.activeItem.price
+
+    watchEffect(() => {
+      AppState.activeItem.id
+      editable.value.name = AppState.activeItem.name
+      editable.value.description = AppState.activeItem.description
+      editable.value.price = AppState.activeItem.price
+    })
 
     return {
-      editData: computed(() => props.editProp),
       editable,
-      async editItem(editId) {
+
+
+
+      async editActiveItem() {
         try {
           const itemData = editable.value
-          itemData.id = editId
+          itemData.id = AppState.activeItem.id
           await itemsService.editItem(itemData)
           ctx.emit('itemEdited');
           editable.value = {}

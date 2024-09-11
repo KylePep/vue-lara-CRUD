@@ -3,7 +3,9 @@
 
 <template>
   <div class=" hero-container">
-    <h1 class="text-6xl mb-4 uppercase text-outline protest-guerrilla-regular">bucket list </h1>
+    <RouterLink :to="{ name: 'Home' }"
+      class="btn btn-info text-6xl mb-4 uppercase text-outline protest-guerrilla-regular">bucket
+      list </RouterLink>
     <h2 class="text-base font-bold mb-4  text-outline">What's left before it's done? </h2>
   </div>
 </template>
@@ -14,5 +16,6 @@
   text-align: center;
   padding-top: 4rem;
   max-height: 33vh;
+  margin-bottom: 2rem;
 }
 </style>

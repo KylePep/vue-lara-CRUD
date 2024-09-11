@@ -2,16 +2,14 @@
 import { RouterView } from 'vue-router'
 import LoginBar from "./components/LoginBar.vue";
 import HeroSection from "./components/HeroSection.vue";
-import NavBar from "./components/NavBar.vue";
 </script>
 
 <template>
+  <nav>
+    <LoginBar />
+  </nav>
   <header>
     <HeroSection />
-    <nav>
-      <LoginBar />
-      <NavBar />
-    </nav>
   </header>
   <main>
     <RouterView />

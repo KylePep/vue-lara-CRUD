@@ -11,9 +11,14 @@ const routes = [
     component: loadView('HomeView')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: loadView('AboutView')
+    path: '/item',
+    name: 'Item',
+    component: loadView('ItemView')
+  },
+  {
+    path: '/bucket',
+    name: 'Bucket',
+    component: loadView('BucketView')
   }
 ]
 

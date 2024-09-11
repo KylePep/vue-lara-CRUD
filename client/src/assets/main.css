@@ -5,9 +5,12 @@
 
 #app {
   margin: 0 auto;
-  padding: 0 2rem 0;
   font-weight: normal;
   color: lightblue;
+}
+
+main {
+  padding: 0 2rem 0;
 }
 
 body {

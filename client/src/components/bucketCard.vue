@@ -19,7 +19,6 @@
 <script>
 import { AppState } from "@/AppState.js";
 import { Bucket } from "@/models/Bucket.js";
-import { bucketService } from "@/services/BucketService.js";
 import { itemsService } from "@/services/ItemsService.js";
 import Pop from "@/utils/Pop.js";
 import { computed } from "vue";
@@ -33,6 +32,8 @@ export default {
       bucket: computed(() => props.bucketProp),
 
       async setOrCheckBucket(bucket) {
+
+
         if (AppState.activeBucket.id != bucket.id) {
           AppState.activeBucketItems = [];
           AppState.activeBucket = bucket;
@@ -43,14 +44,11 @@ export default {
             AppState.activeBucketItems = AppState.bucketItemsCache[bucketIndex]
           }
         } else {
-          try {
-            const bucketId = bucket.id
-            await bucketService.checkBucket(bucketId)
-          } catch (error) {
-            Pop.error(error.message, '[Kick error, Something went wrong]')
-          }
+          AppState.activeBucketItems = [];
+          AppState.activeBucket = {};
         }
       },
+
       async getItemsByBucketId(bucketId) {
         try {
           await itemsService.getItemsByBucketId(bucketId)

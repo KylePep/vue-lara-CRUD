@@ -3,17 +3,12 @@
     <div class="border-b-4 border-teal-500 mx-4 pb-4 relative">
       <button @click="closeActiveBucket"
         class="absolute top-0 right-0  btn btn-danger text-sm text-outline-sm">X</button>
-      <button v-if="bucket.checked == false" @click="checkBucket(bucket)"
-        class="font-bold uppercase  btn btn-info text-outline-sm text-center"><strong>{{
-          bucket.name
-        }}</strong>
-      </button>
 
-      <button v-else @click="checkBucket(bucket)"
-        class="font-bold uppercase  btn btn-check text-outline-sm text-center"><strong>{{
+      <div :class="[bucket.checked == false ? 'text-teal-300' : 'text-orange-100']"
+        class="font-bold text-5xl uppercase text-outline-sm text-center">{{
           bucket.name
-        }}</strong>
-      </button>
+        }}
+      </div>
 
       <p class="text-xl">
         {{ bucket.description }}

@@ -25,6 +25,7 @@ async function checkBucket() {
 
 
 <template>
+
   <div
     class="nav-container flex flex-row justify-around rounded-t-lg uppercase text-3xl font-bold protest-guerrilla-regular">
 
@@ -44,8 +45,8 @@ async function checkBucket() {
 
     <button @click="setForm('itemForm')" :class="[itemFormActive ? 'btn-warn' : 'btn-success']"
       class="nav-btn btn btn-success bg-teal-800/75 hover:bg-teal-800 w-full rounded-t ms-2">New Item</button>
-
   </div>
+
 </template>
 
 
